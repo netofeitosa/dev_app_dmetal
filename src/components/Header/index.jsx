@@ -14,7 +14,7 @@ const Header = () => {
       <NavHeader>
         <img src={logoPreta} alt="Logo" width="95" />
 
-        <Link to="/app_dmetal_dev/Perfil">
+        <Link to="/Perfil">
           {!auth.user?.image ? (
             <HiOutlineUserCircle
               size={32}

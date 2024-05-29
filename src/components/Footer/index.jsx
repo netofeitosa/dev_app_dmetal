@@ -20,20 +20,20 @@ const Footer = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const pathname = location.pathname.replace("/app_dmetal_dev/", "");
+    const pathname = location.pathname.replace("/", "");
     setPaginaAtiva(pathname);
   }, [location]);
 
   const handleLogout = () => {
     auth.signout();
-    navigate("/app_dmetal_dev");
+    navigate("/");
   };
 
   return (
     <ContainerFooter>
       <Row>
         <Col span={8}>
-          <Link to={"/app_dmetal_dev/aprovacoes"}>
+          <Link to={"/aprovacoes"}>
             <ContainerFooterLink>
               {paginaAtiva === "aprovacoes" ? (
                 <div style={{ color: "#582183" }}>
@@ -53,7 +53,7 @@ const Footer = () => {
           </Link>
         </Col>
         <Col span={8}>
-          <Link to={"/app_dmetal_dev/relatorios"}>
+          <Link to={"/relatorios"}>
             <ContainerFooterLink>
               {paginaAtiva === "relatorios" ? (
                 <div style={{ color: "#582183" }}>

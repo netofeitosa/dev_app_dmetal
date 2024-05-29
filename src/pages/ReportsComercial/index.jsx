@@ -39,7 +39,7 @@ const ReportsComercial = () => {
           <SectionCol2>
             <HiMiniChevronRight
               size={24}
-              onClick={() => [Navigate(`/app_dmetal_dev/Comercial Lojas`)]}
+              onClick={() => [Navigate(`/Comercial Lojas`)]}
             />
           </SectionCol2>
         </SectionLine>
@@ -54,9 +54,7 @@ const ReportsComercial = () => {
           <SectionCol2>
             <HiMiniChevronRight
               size={24}
-              onClick={() => [
-                Navigate(`/app_dmetal_dev/Comercial Representantes`),
-              ]}
+              onClick={() => [Navigate(`/Comercial Representantes`)]}
             />
           </SectionCol2>
         </SectionLine>

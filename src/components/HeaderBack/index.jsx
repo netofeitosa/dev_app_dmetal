@@ -18,7 +18,7 @@ const HeaderBack = (props) => {
         <HiOutlineHome
           size={28}
           style={{ strokeWidth: 1.7 }}
-          onClick={() => [navigate("/app_dmetal_dev/aprovacoes")]}
+          onClick={() => [navigate("/aprovacoes")]}
         />
       </NavHeaderBack>
     </ContainerHeaderBack>

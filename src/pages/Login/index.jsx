@@ -35,7 +35,7 @@ const Login = () => {
     if (auth.isLoading) {
       setLoading(true);
     } else if (auth.user) {
-      navigate("/app_dmetal_dev/aprovacoes");
+      navigate("/aprovacoes");
     } else {
       setLoading(false);
     }

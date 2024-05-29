@@ -27,7 +27,7 @@ export const RequireAuth = ({ children }) => {
       setLoading(true);
     } else if (!auth.user) {
       // Redireciona se não houver usuário autenticado
-      navigate("/app_dmetal_dev");
+      navigate("/");
     } else {
       // Se o usuário está autenticado, remove o estado de carregamento
       setLoading(false);

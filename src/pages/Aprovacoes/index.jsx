@@ -65,7 +65,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate("/app_dmetal_dev/Despesas")]}
+                  onClick={() => [Navigate("/Despesas")]}
                 />
               </ContainerAprovacoesChevron>
             </div>
@@ -84,7 +84,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate("/app_dmetal_dev/Descontos")]}
+                  onClick={() => [Navigate("/Descontos")]}
                 />
               </ContainerAprovacoesChevron>
             </div>
@@ -102,7 +102,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate("/app_dmetal_dev/Cancelamentos")]}
+                  onClick={() => [Navigate("/Cancelamentos")]}
                 />
               </ContainerAprovacoesChevron>
             </div>
@@ -123,7 +123,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate(`/app_dmetal_dev/Saídas Avulsas`)]}
+                  onClick={() => [Navigate(`/Saídas Avulsas`)]}
                 />
               </ContainerAprovacoesChevron>
             </div>

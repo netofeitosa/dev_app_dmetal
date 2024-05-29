@@ -27,11 +27,11 @@ const AppRouter = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/app_dmetal_dev" load element={<Login />}></Route>
+        <Route path="/" load element={<Login />}></Route>
 
         <Route path="/" element={<PageBase />}>
           <Route
-            path="/app_dmetal_dev/aprovacoes"
+            path="/aprovacoes"
             element={
               <RequireAuth>
                 <Aprovacoes />
@@ -39,7 +39,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/app_dmetal_dev/relatorios"
+            path="/relatorios"
             element={
               <RequireAuth>
                 <Reports />
@@ -49,7 +49,7 @@ const AppRouter = () => {
         </Route>
         <Route path="/" element={<PageBaseBack description={decodedPath} />}>
           <Route
-            path="/app_dmetal_dev/Perfil"
+            path="/Perfil"
             element={
               <RequireAuth>
                 <User />
@@ -57,7 +57,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/app_dmetal_dev/Despesas"
+            path="/Despesas"
             element={
               <RequireAuth>
                 <AprovacoesDespesas />
@@ -65,7 +65,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/app_dmetal_dev/Descontos"
+            path="/Descontos"
             element={
               <RequireAuth>
                 <AprovacoesDescontos />
@@ -73,7 +73,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/app_dmetal_dev/Cancelamentos"
+            path="/Cancelamentos"
             element={
               <RequireAuth>
                 <AprovacoesCancelamentos />
@@ -81,7 +81,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path={`/app_dmetal_dev/Saídas Avulsas`}
+            path={`/Saídas Avulsas`}
             element={
               <RequireAuth>
                 <AprovacoesSaidas />
@@ -89,7 +89,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/app_dmetal_dev/Comercial"
+            path="/Comercial"
             element={
               <RequireAuth>
                 <ReportsComercial />
@@ -97,7 +97,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path={`/app_dmetal_dev/Comercial Lojas`}
+            path={`/Comercial Lojas`}
             element={
               <RequireAuth>
                 <ReportsComercialLojas />
@@ -105,7 +105,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path={`/app_dmetal_dev/Comercial Representantes`}
+            path={`/Comercial Representantes`}
             element={
               <RequireAuth>
                 <ReportsComercialRepresentantes />
@@ -113,7 +113,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/app_dmetal_dev/Industrial"
+            path="/Industrial"
             element={
               <RequireAuth>
                 <ReportsIndustrial />
@@ -121,7 +121,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/app_dmetal_dev/Vendas x Cupom"
+            path="/Vendas x Cupom"
             element={
               <RequireAuth>
                 <VendasVsCupom />
