@@ -1,9 +1,8 @@
 import React from "react";
-import { Table } from "antd";
+import { Table, FloatButton } from "antd";
 import { Header, Title } from "./tablevendacupom.style";
 
 const TableVendasVsCupom = (props) => {
-  // Função para formatar valores com sufixos B, M, K
   const formatarValor = (valor) => {
     if (valor >= 1000000000) {
       return (valor / 1000000000).toFixed(1) + "B";
@@ -27,7 +26,7 @@ const TableVendasVsCupom = (props) => {
       title: "Loja",
       dataIndex: "nome_fantasia",
       key: "nome_fantasia",
-      sorter: (a, b) => a.loja - b.loja,
+      fixed: "left",
     },
     {
       title: "Venda",
@@ -39,8 +38,14 @@ const TableVendasVsCupom = (props) => {
       title: "Cupom",
       dataIndex: "total_cupom_format",
       key: "total_cupom_format",
-      defaultSortOrder: "descend",
       sorter: (a, b) => a.total_cupom - b.total_cupom,
+    },
+    {
+      title: "%",
+      dataIndex: "perc",
+      key: "perc",
+      defaultSortOrder: "descend",
+      sorter: (a, b) => a.perc - b.perc,
     },
   ];
 

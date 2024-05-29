@@ -16,7 +16,7 @@ import {
   Section,
   Table,
 } from "./vendasvscupom.style";
-import { Divider } from "antd";
+import { Divider, FloatButton } from "antd";
 import TableVendasVsCupom from "../../../components/Charts/TableVendasVsCupom";
 
 const VendasVsCupom = () => {
@@ -114,6 +114,7 @@ const VendasVsCupom = () => {
         </ResumeDivider>
         <Table>
           <TableVendasVsCupom dados={dados}></TableVendasVsCupom>
+          <FloatButton.BackTop />
         </Table>
       </Details>
     </Section>
