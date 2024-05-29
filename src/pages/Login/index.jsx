@@ -147,7 +147,7 @@ const Login = () => {
               rel="noopener noreferrer"
             >
               <IoLogoYoutube size={22} />
-              <span>/OficialDmetallll</span>
+              <span>/OficialDmetal</span>
             </a>
           </div>
         </ContainerLoginSectionSocial>
