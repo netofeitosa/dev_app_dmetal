@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useLayoutEffect } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { Divider } from "antd";
 
 import {
@@ -19,6 +19,12 @@ import {
 
 const ReportsComercial = () => {
   const Navigate = useNavigate();
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Comercial");
+  }, [setPageTitle]);
+
   return (
     <Container
       initial={{ opacity: 0, x: 200 }}
@@ -39,7 +45,7 @@ const ReportsComercial = () => {
           <SectionCol2>
             <HiMiniChevronRight
               size={24}
-              onClick={() => [Navigate(`/Comercial Lojas`)]}
+              onClick={() => [Navigate("/comerciallojas")]}
             />
           </SectionCol2>
         </SectionLine>
@@ -54,7 +60,7 @@ const ReportsComercial = () => {
           <SectionCol2>
             <HiMiniChevronRight
               size={24}
-              onClick={() => [Navigate(`/Comercial Representantes`)]}
+              onClick={() => [Navigate("/comercialrepresentantes")]}
             />
           </SectionCol2>
         </SectionLine>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Api } from "../../../services/api";
 import Spinner from "../../../components/Spinner";
 import ChartVendasVsCupom from "../../../components/Charts/ChartVendasVsCupom";
@@ -18,10 +18,16 @@ import {
 } from "./vendasvscupom.style";
 import { Divider, FloatButton } from "antd";
 import TableVendasVsCupom from "../../../components/Charts/TableVendasVsCupom";
+import { useOutletContext } from "react-router-dom";
 
 const VendasVsCupom = () => {
   const [dados, setDados] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Vendas x Cupom");
+  }, [setPageTitle]);
 
   useEffect(() => {
     const getDados = async () => {

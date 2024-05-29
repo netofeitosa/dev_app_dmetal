@@ -22,7 +22,6 @@ import { AnimatePresence } from "framer-motion";
 
 const AppRouter = () => {
   const location = useLocation();
-  const decodedPath = decodeURIComponent(location.pathname.split("/").pop());
 
   return (
     <AnimatePresence mode="wait">
@@ -47,9 +46,9 @@ const AppRouter = () => {
             }
           ></Route>
         </Route>
-        <Route path="/" element={<PageBaseBack description={decodedPath} />}>
+        <Route path="/" element={<PageBaseBack />}>
           <Route
-            path="/Perfil"
+            path="/perfil"
             element={
               <RequireAuth>
                 <User />
@@ -57,7 +56,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/Despesas"
+            path="/despesas"
             element={
               <RequireAuth>
                 <AprovacoesDespesas />
@@ -65,7 +64,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/Descontos"
+            path="/descontos"
             element={
               <RequireAuth>
                 <AprovacoesDescontos />
@@ -73,7 +72,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/Cancelamentos"
+            path="/cancelamentos"
             element={
               <RequireAuth>
                 <AprovacoesCancelamentos />
@@ -81,7 +80,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path={`/Saídas Avulsas`}
+            path="/saidasavulsas"
             element={
               <RequireAuth>
                 <AprovacoesSaidas />
@@ -89,7 +88,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/Comercial"
+            path="/comercial"
             element={
               <RequireAuth>
                 <ReportsComercial />
@@ -97,7 +96,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path={`/Comercial Lojas`}
+            path="/comerciallojas"
             element={
               <RequireAuth>
                 <ReportsComercialLojas />
@@ -105,7 +104,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path={`/Comercial Representantes`}
+            path="/comercialrepresentantes"
             element={
               <RequireAuth>
                 <ReportsComercialRepresentantes />
@@ -113,7 +112,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/Industrial"
+            path="/industrial"
             element={
               <RequireAuth>
                 <ReportsIndustrial />
@@ -121,7 +120,7 @@ const AppRouter = () => {
             }
           ></Route>
           <Route
-            path="/Vendas x Cupom"
+            path="/vendasxcupom"
             element={
               <RequireAuth>
                 <VendasVsCupom />

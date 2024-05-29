@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Divider } from "antd";
 
 import {
@@ -14,8 +14,15 @@ import {
   SectionDivider,
   SectionLine,
 } from "./reportscomercialrepresentantes.style";
+import { useOutletContext } from "react-router-dom";
 
 const ReportsComercialRepresentantes = () => {
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Representantes");
+  }, [setPageTitle]);
+
   return (
     <Container
       initial={{ opacity: 0, x: 200 }}

@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Api } from "../../services/api";
 import Spinner from "../../components/Spinner";
 import TableAprovacoesCancelamentos from "../../components/TableAprovacoesCancelamentos";
 
 import { Container } from "./aprovacoescancelamentos.style";
+import { useOutletContext } from "react-router-dom";
 
 const AprovacoesCancelamentos = () => {
   const [cancelamentos, setCancelamentos] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Cancelamentos");
+  }, [setPageTitle]);
 
   const getCancelamentos = async () => {
     setRemoveLoading(false);

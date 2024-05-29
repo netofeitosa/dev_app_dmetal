@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useLayoutEffect } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { Avatar } from "antd";
 import { TbUserEdit } from "react-icons/tb";
+import { useOutletContext } from "react-router-dom";
 
 import {
   ContainerUser,
@@ -11,6 +12,11 @@ import {
 
 const User = () => {
   const auth = useContext(AuthContext);
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Perfil");
+  }, [setPageTitle]);
 
   return (
     <ContainerUser
@@ -29,7 +35,7 @@ const User = () => {
       <ContainerUserData>
         <ContainerUserDataForm>
           <span>Nome</span>
-          <span>{auth.user.nome}</span>
+          <span>{auth.user?.nome}</span>
         </ContainerUserDataForm>
         <ContainerUserDataForm>
           <span>Usuário</span>

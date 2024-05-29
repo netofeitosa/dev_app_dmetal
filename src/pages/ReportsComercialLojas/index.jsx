@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Divider } from "antd";
 
 import {
@@ -14,10 +14,16 @@ import {
   SectionDivider,
   SectionLine,
 } from "./reportscomerciallojas.style";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const ReportsComercialLojas = () => {
   const Navigate = useNavigate();
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Lojas");
+  }, [setPageTitle]);
+
   return (
     <Container
       initial={{ opacity: 0, x: 200 }}
@@ -34,7 +40,7 @@ const ReportsComercialLojas = () => {
           <SectionCol2>
             <HiMiniChevronRight
               size={24}
-              onClick={() => [Navigate(`/Vendas x Cupom`)]}
+              onClick={() => [Navigate("/vendasxcupom")]}
             />
           </SectionCol2>
         </SectionLine>

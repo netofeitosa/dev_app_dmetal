@@ -65,7 +65,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate("/Despesas")]}
+                  onClick={() => [Navigate("/despesas")]}
                 />
               </ContainerAprovacoesChevron>
             </div>
@@ -84,7 +84,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate("/Descontos")]}
+                  onClick={() => [Navigate("/descontos")]}
                 />
               </ContainerAprovacoesChevron>
             </div>
@@ -102,7 +102,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate("/Cancelamentos")]}
+                  onClick={() => [Navigate("/cancelamentos")]}
                 />
               </ContainerAprovacoesChevron>
             </div>
@@ -123,7 +123,7 @@ const Aprovacoes = () => {
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
-                  onClick={() => [Navigate(`/Saídas Avulsas`)]}
+                  onClick={() => [Navigate("/saidasavulsas")]}
                 />
               </ContainerAprovacoesChevron>
             </div>

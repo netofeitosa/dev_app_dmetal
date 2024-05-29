@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Api } from "../../services/api";
 import Spinner from "../../components/Spinner";
 import TableAprovacoesDespesas from "../../components/TableAprovacoesDespesas";
 import { Container } from "./aprovacoesdespesas.style";
+import { useOutletContext } from "react-router-dom";
 
 const AprovacoesDespesas = () => {
   const [despesas, setDespesas] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Despesas");
+  }, [setPageTitle]);
 
   const getDespesas = async () => {
     setRemoveLoading(false);

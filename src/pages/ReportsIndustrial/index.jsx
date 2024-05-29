@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useLayoutEffect } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import {
   HiMiniChevronRight,
@@ -16,6 +16,12 @@ import {
 
 const ReportsIndustrial = () => {
   const Navigate = useNavigate();
+  const { setPageTitle } = useOutletContext();
+
+  useLayoutEffect(() => {
+    setPageTitle("Industrial");
+  }, [setPageTitle]);
+
   return (
     <Container
       initial={{ opacity: 0, x: 200 }}
