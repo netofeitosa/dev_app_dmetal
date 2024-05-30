@@ -4,6 +4,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import {
   HiMiniChevronRight,
   HiOutlinePresentationChartBar,
+  HiOutlineLockClosed,
 } from "react-icons/hi2";
 
 import {
@@ -36,7 +37,8 @@ const ReportsIndustrial = () => {
             <span>Controle de Facções</span>
           </SectionCol1>
           <SectionCol2>
-            <HiMiniChevronRight size={24} />
+            {/* <HiMiniChevronRight size={24} /> */}
+            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
           </SectionCol2>
         </SectionLine>
       </Section>

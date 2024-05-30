@@ -4,6 +4,7 @@ import { Divider } from "antd";
 import {
   HiMiniChevronRight,
   HiOutlinePresentationChartBar,
+  HiOutlineLockClosed,
 } from "react-icons/hi2";
 
 import {
@@ -53,7 +54,8 @@ const ReportsComercialLojas = () => {
             <span>Vendas Gerais</span>
           </SectionCol1>
           <SectionCol2>
-            <HiMiniChevronRight size={24} />
+            {/* <HiMiniChevronRight size={24} /> */}
+            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
           </SectionCol2>
         </SectionLine>
         <SectionDivider>
@@ -65,7 +67,10 @@ const ReportsComercialLojas = () => {
             <span>Vendas Lojas</span>
           </SectionCol1>
           <SectionCol2>
-            <HiMiniChevronRight size={24} />
+            <HiMiniChevronRight
+              size={24}
+              onClick={() => [Navigate("/vendaslojas")]}
+            />
           </SectionCol2>
         </SectionLine>
         <SectionDivider>
@@ -77,7 +82,8 @@ const ReportsComercialLojas = () => {
             <span>Estoque Geral</span>
           </SectionCol1>
           <SectionCol2>
-            <HiMiniChevronRight size={24} />
+            {/* <HiMiniChevronRight size={24} /> */}
+            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
           </SectionCol2>
         </SectionLine>
       </Section>

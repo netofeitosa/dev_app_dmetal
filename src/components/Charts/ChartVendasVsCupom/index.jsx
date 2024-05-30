@@ -13,6 +13,9 @@ const ChartVendasVsCupom = (props) => {
     chart: {
       type: "bar",
       height: 200,
+      toolbar: {
+        show: false, // Desativa a toolbar
+      },
     },
     plotOptions: {
       bar: {
