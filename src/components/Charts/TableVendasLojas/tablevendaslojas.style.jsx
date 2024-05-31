@@ -24,7 +24,7 @@ export const Title = styled.div`
   }
 `;
 
-export const Meta = styled.div`
+export const MetaDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

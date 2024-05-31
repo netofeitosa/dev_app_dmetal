@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "antd";
-import { Header, Meta, Title } from "./tablevendaslojas.style";
+import { Header, MetaDiv, Title } from "./tablevendaslojas.style";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 const TableVendasLojas = (props) => {
@@ -21,7 +21,10 @@ const TableVendasLojas = (props) => {
     venda_dia_loja_format: formatarValor(loja.venda_dia_loja),
     venda_mes_loja_format: formatarValor(loja.venda_mes_loja),
     meta_format: formatarValor(loja.meta),
-    meta_batida: loja.venda_mes_loja >= loja.meta,
+    meta_batida: parseFloat(loja.venda_mes_loja) >= parseFloat(loja.meta),
+    media_mensal_venda_format: formatarValor(loja.media_mensal_venda),
+    media_batida:
+      parseFloat(loja.venda_mes_loja) >= parseFloat(loja.media_mensal_venda),
   }));
 
   const columns = [
@@ -45,20 +48,35 @@ const TableVendasLojas = (props) => {
       sorter: (a, b) => a.venda_mes_loja - b.venda_mes_loja,
     },
     {
+      title: "Média",
+      dataIndex: "media_mensal_venda_format",
+      key: "media_mensal_venda",
+      sorter: (a, b) => a.media_mensal_venda - b.media_mensal_venda,
+      render: (text, record) => (
+        <MetaDiv meta={record.media_batida}>
+          {text}
+          {record.media_batida ? (
+            <CheckCircleOutlined />
+          ) : (
+            <CloseCircleOutlined />
+          )}
+        </MetaDiv>
+      ),
+    },
+    {
       title: "Meta",
       dataIndex: "meta_format",
       key: "meta",
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.venda_mes_loja - b.venda_mes_loja,
+      sorter: (a, b) => a.meta - b.meta,
       render: (text, record) => (
-        <Meta meta={record.meta_batida}>
+        <MetaDiv meta={record.meta_batida}>
           {text}
           {record.meta_batida ? (
             <CheckCircleOutlined />
           ) : (
             <CloseCircleOutlined />
           )}
-        </Meta>
+        </MetaDiv>
       ),
     },
   ];
