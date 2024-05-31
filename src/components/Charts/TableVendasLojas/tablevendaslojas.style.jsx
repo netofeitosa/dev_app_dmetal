@@ -23,3 +23,11 @@ export const Title = styled.div`
     font-size: 10px;
   }
 `;
+
+export const Meta = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: ${(props) => (props.meta ? "green" : "red")};
+  gap: 2px;
+`;

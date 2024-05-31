@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "antd";
-import { Header, Title } from "./tablevendaslojas.style";
+import { Header, Meta, Title } from "./tablevendaslojas.style";
+import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 const TableVendasLojas = (props) => {
   const formatarValor = (valor) => {
@@ -20,6 +21,7 @@ const TableVendasLojas = (props) => {
     venda_dia_loja_format: formatarValor(loja.venda_dia_loja),
     venda_mes_loja_format: formatarValor(loja.venda_mes_loja),
     meta_format: formatarValor(loja.meta),
+    meta_batida: loja.venda_mes_loja >= loja.meta,
   }));
 
   const columns = [
@@ -48,6 +50,16 @@ const TableVendasLojas = (props) => {
       key: "meta",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.venda_mes_loja - b.venda_mes_loja,
+      render: (text, record) => (
+        <Meta meta={record.meta_batida}>
+          {text}
+          {record.meta_batida ? (
+            <CheckCircleOutlined />
+          ) : (
+            <CloseCircleOutlined />
+          )}
+        </Meta>
+      ),
     },
   ];
 
