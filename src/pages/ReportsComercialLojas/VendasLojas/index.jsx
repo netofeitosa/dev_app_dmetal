@@ -3,6 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
 import { Api } from "../../../services/api";
 import ChartVendasLojas from "../../../components/Charts/ChartVendasLojas";
+import TableVendasLojas from "../../../components/Charts/TableVendasLojas";
 import {
   Chart,
   ChartResume,
@@ -11,11 +12,13 @@ import {
   ResumeCardItens,
   ResumeCardItensCol,
   ResumeCardItensInd,
+  ResumeCardItensPM,
   ResumeCardTitle,
-  ResumeDivider,
   Section,
+  SectionDivider,
+  Table,
 } from "./vendaslojas.style";
-import { Col, Divider, Row } from "antd";
+import { Col, Divider, FloatButton, Row } from "antd";
 import { HiMiniChevronDown, HiMiniChevronUp } from "react-icons/hi2";
 
 const VendasLojas = () => {
@@ -52,16 +55,43 @@ const VendasLojas = () => {
     }
   }
 
+  function NumberFormatedBR(value) {
+    return parseFloat(value).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+
   return !removeLoading ? (
     <Spinner />
   ) : (
     <Section>
+      <ChartResume
+        initial={{ opacity: 0, x: 200 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}
+        transition={{ duration: 0.1 }}
+      >
+        <Chart>
+          <ChartVendasLojas dados={dados} />
+        </Chart>
+      </ChartResume>
+      <SectionDivider
+        initial={{ opacity: 0, x: 200 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}
+        transition={{ duration: 0.1, delay: 0.1 }}
+      >
+        <Divider orientation="center" plain>
+          Resumo
+        </Divider>
+      </SectionDivider>
       <Resume>
         <ResumeCard
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -200 }}
-          transition={{ duration: 0.1 }}
+          transition={{ duration: 0.1, delay: 0.1 }}
         >
           <ResumeCardTitle>
             <span>Vendas Dia</span>
@@ -210,7 +240,7 @@ const VendasLojas = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -200 }}
-          transition={{ duration: 0.1, delay: 0.1 }}
+          transition={{ duration: 0.1, delay: 0.2 }}
         >
           <ResumeCardTitle>
             <span>Vendas Mês</span>
@@ -358,7 +388,7 @@ const VendasLojas = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -200 }}
-          transition={{ duration: 0.1, delay: 0.2 }}
+          transition={{ duration: 0.1, delay: 0.3 }}
         >
           <ResumeCardTitle>
             <span>Peças</span>
@@ -503,18 +533,62 @@ const VendasLojas = () => {
             </Row>
           </ResumeCardItens>
         </ResumeCard>
+        <ResumeCard
+          initial={{ opacity: 0, x: 200 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -200 }}
+          transition={{ duration: 0.1, delay: 0.3 }}
+        >
+          <ResumeCardTitle>
+            <span>Preço Médio</span>
+          </ResumeCardTitle>
+          <ResumeCardItens>
+            <Row>
+              <Col span={8}>
+                <ResumeCardItensCol>
+                  <ResumeCardItensPM>
+                    {NumberFormatedBR(dados.Resultado[0].pm_atacado)}
+                  </ResumeCardItensPM>
+                  <Divider />
+                  <span>Atacado</span>
+                </ResumeCardItensCol>
+              </Col>
+              <Col span={8}>
+                <ResumeCardItensCol>
+                  <ResumeCardItensPM>
+                    {NumberFormatedBR(dados.Resultado[0].pm_varejo)}
+                  </ResumeCardItensPM>
+                  <Divider />
+                  <span>Varejo</span>
+                </ResumeCardItensCol>
+              </Col>
+              <Col span={8}>
+                <ResumeCardItensCol>
+                  <ResumeCardItensPM>
+                    {NumberFormatedBR(dados.Resultado[0].pm_ecommerce)}
+                  </ResumeCardItensPM>
+                  <Divider />
+                  <span>Site</span>
+                </ResumeCardItensCol>
+              </Col>
+            </Row>
+          </ResumeCardItens>
+        </ResumeCard>
       </Resume>
-
-      <ChartResume
+      <SectionDivider
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -200 }}
         transition={{ duration: 0.1, delay: 0.3 }}
       >
-        <Chart>
-          <ChartVendasLojas dados={dados} />
-        </Chart>
-      </ChartResume>
+        <Divider orientation="center" plain>
+          Detalhes
+        </Divider>
+      </SectionDivider>
+      <Table>
+        <TableVendasLojas dados={dados}></TableVendasLojas>
+        <FloatButton.BackTop />
+      </Table>
     </Section>
   );
 };

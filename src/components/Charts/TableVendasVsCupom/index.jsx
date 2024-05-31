@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, FloatButton } from "antd";
+import { Table } from "antd";
 import { Header, Title } from "./tablevendacupom.style";
 
 const TableVendasVsCupom = (props) => {

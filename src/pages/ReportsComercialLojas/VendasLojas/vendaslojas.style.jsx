@@ -8,7 +8,14 @@ export const Section = styled(motion.section)`
   align-items: center;
   justify-content: start;
   width: 100%;
-  gap: 30px;
+  gap: 15px;
+`;
+
+export const SectionDivider = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88%;
 `;
 
 export const Resume = styled(motion.div)`
@@ -26,13 +33,6 @@ export const ResumeTitle = styled.div`
   width: 90%;
   font-size: 16px;
   font-weight: 500;
-`;
-
-export const ResumeDivider = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 88%;
 `;
 
 export const ResumeCard = styled(motion.div)`
@@ -81,13 +81,17 @@ export const ResumeCardItensCol = styled.div`
   }
 `;
 
+export const ResumeCardItensPM = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+`;
+
 export const ResumeCardItensInd = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1px;
   background-color: ${(props) => (props.isNegative ? "red" : "green")};
-  //background-color: red;
   color: #ffffff;
   font-weight: 600;
   padding: 3px 0px;
