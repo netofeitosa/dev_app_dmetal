@@ -26,6 +26,11 @@ const TableAprovacoesSaidas = (props) => {
       sorter: (a, b) => a.registro - b.registro,
     },
     {
+      title: "Data",
+      dataIndex: "data",
+      key: "data",
+    },
+    {
       title: "Filial",
       dataIndex: "filial",
       key: "filial",
@@ -96,10 +101,6 @@ const TableAprovacoesSaidas = (props) => {
               <div>
                 <span>Usuário</span>
                 <span>{record.usuario}</span>
-              </div>
-              <div>
-                <span>Data</span>
-                <span>{record.data}</span>
               </div>
             </ContainerObservacoesDetalhes>
             <Divider orientation="center"></Divider>
