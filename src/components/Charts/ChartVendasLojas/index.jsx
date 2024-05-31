@@ -25,11 +25,17 @@ const ChartVendasLojas = (props) => {
       height: 350,
       type: "line",
       toolbar: {
-        show: false,
+        show: true,
+      },
+      zoom: {
+        enabled: false,
       },
     },
     stroke: {
       width: [0, 0, 3],
+    },
+    title: {
+      text: "Gráfico de Vendas",
     },
     dataLabels: {
       enabled: true,
@@ -98,6 +104,11 @@ const ChartVendasLojas = (props) => {
         vertical: 5,
       },
       offsetY: 10,
+    },
+    plotOptions: {
+      bar: {
+        barWidth: "100%",
+      },
     },
   };
 
