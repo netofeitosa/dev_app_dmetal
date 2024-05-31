@@ -104,7 +104,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].venda_dia_atacado)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_dia_atacado -
                         dados.Resultado[0].venda_dia_anterior_atacado <
                       0
@@ -139,7 +139,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].venda_dia_varejo)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_dia_varejo -
                         dados.Resultado[0].venda_dia_anterior_varejo <
                       0
@@ -173,7 +173,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].venda_dia_ecommerce)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_dia_ecommerce -
                         dados.Resultado[0].venda_dia_anterior_ecommerce <
                       0
@@ -205,7 +205,7 @@ const VendasLojas = () => {
                 <ResumeCardItensCol>
                   <span>{NumberFormated(dados.Resultado[0].venda_dia)}</span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_dia -
                         dados.Resultado[0].venda_dia_anterior <
                       0
@@ -253,7 +253,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].venda_mes_atacado)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_mes_atacado -
                         dados.Resultado[0].venda_mes_anterior_atacado <
                       0
@@ -287,7 +287,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].venda_mes_varejo)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_mes_varejo -
                         dados.Resultado[0].venda_mes_anterior_varejo <
                       0
@@ -321,7 +321,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].venda_mes_ecommerce)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_mes_ecommerce -
                         dados.Resultado[0].venda_mes_anterior_ecommerce <
                       0
@@ -353,7 +353,7 @@ const VendasLojas = () => {
                 <ResumeCardItensCol>
                   <span>{NumberFormated(dados.Resultado[0].venda_mes)}</span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].venda_mes -
                         dados.Resultado[0].venda_mes_anterior <
                       0
@@ -401,7 +401,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].quant_pcs_mes_atacado)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].quant_pcs_mes_atacado -
                         dados.Resultado[0].quant_pcs_mes_anterior_atacado <
                       0
@@ -435,7 +435,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].quant_pcs_mes_varejo)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].quant_pcs_mes_varejo -
                         dados.Resultado[0].quant_pcs_mes_anterior_varejo <
                       0
@@ -469,7 +469,7 @@ const VendasLojas = () => {
                     {NumberFormated(dados.Resultado[0].quant_pcs_mes_ecommerce)}
                   </span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].quant_pcs_mes_ecommerce -
                         dados.Resultado[0].quant_pcs_mes_anterior_ecommerce <
                       0
@@ -502,7 +502,7 @@ const VendasLojas = () => {
                 <ResumeCardItensCol>
                   <span>{NumberFormated(dados.Resultado[0].pcs_mes)}</span>
                   <ResumeCardItensInd
-                    isNegative={
+                    $isNegative={
                       dados.Resultado[0].pcs_mes -
                         dados.Resultado[0].pcs_mes_anterior <
                       0

@@ -70,6 +70,7 @@ export const ResumeCol1 = styled.div`
 
   & div:nth-child(5) {
     font-size: 18px;
+    border: 1px solid #eeeeee;
     background-color: ${({ Theme }) => theme.color.background};
     width: 90%;
     padding: 10px 0px;

@@ -91,7 +91,7 @@ export const ResumeCardItensInd = styled.span`
   align-items: center;
   justify-content: center;
   gap: 1px;
-  background-color: ${(props) => (props.isNegative ? "red" : "green")};
+  background-color: ${(props) => (props.$isNegative ? "red" : "green")};
   color: #ffffff;
   font-weight: 600;
   padding: 3px 0px;

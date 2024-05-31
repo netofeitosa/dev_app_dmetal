@@ -53,7 +53,7 @@ const TableVendasLojas = (props) => {
       key: "media_mensal_venda",
       sorter: (a, b) => a.media_mensal_venda - b.media_mensal_venda,
       render: (text, record) => (
-        <MetaDiv meta={record.media_batida}>
+        <MetaDiv $meta={record.media_batida}>
           {text}
           {record.media_batida ? (
             <CheckCircleOutlined />
@@ -69,7 +69,7 @@ const TableVendasLojas = (props) => {
       key: "meta",
       sorter: (a, b) => a.meta - b.meta,
       render: (text, record) => (
-        <MetaDiv meta={record.meta_batida}>
+        <MetaDiv $meta={record.meta_batida}>
           {text}
           {record.meta_batida ? (
             <CheckCircleOutlined />

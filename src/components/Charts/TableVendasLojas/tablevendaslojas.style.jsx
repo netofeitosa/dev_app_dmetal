@@ -28,6 +28,6 @@ export const MetaDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${(props) => (props.meta ? "green" : "red")};
+  color: ${(props) => (props.$meta ? "green" : "red")};
   gap: 2px;
 `;

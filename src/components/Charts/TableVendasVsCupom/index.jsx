@@ -19,14 +19,16 @@ const TableVendasVsCupom = (props) => {
     ...loja,
     total_venda_format: formatarValor(loja.total_venda),
     total_cupom_format: formatarValor(loja.total_cupom),
+    descricao_completa: loja.loja + " - " + loja.nome_fantasia,
   }));
 
   const columns = [
     {
       title: "Loja",
-      dataIndex: "nome_fantasia",
+      dataIndex: "descricao_completa",
       key: "nome_fantasia",
       fixed: "left",
+      sorter: (a, b) => a.loja - b.loja,
     },
     {
       title: "Venda",
