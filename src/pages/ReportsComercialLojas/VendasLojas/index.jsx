@@ -33,8 +33,8 @@ const VendasLojas = () => {
   useEffect(() => {
     const getDados = async () => {
       try {
-        const response = await Api.get("/reportsVendasLojas");
-        setDados(response.data);
+        const response = await Api.get("/vendaslojas");
+        setDados(response.data[0]);
         setRemoveLoading(true);
       } catch (error) {
         console.log(error.response.data.message);
@@ -100,18 +100,16 @@ const VendasLojas = () => {
             <Row>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].venda_dia_atacado)}
-                  </span>
+                  <span>{NumberFormated(dados.venda_dia_atacado)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].venda_dia_atacado -
-                        dados.Resultado[0].venda_dia_anterior_atacado <
+                      dados.venda_dia_atacado -
+                        dados.venda_dia_anterior_atacado <
                       0
                     }
                   >
-                    {dados.Resultado[0].venda_dia_atacado -
-                      dados.Resultado[0].venda_dia_anterior_atacado <
+                    {dados.venda_dia_atacado -
+                      dados.venda_dia_anterior_atacado <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
@@ -119,14 +117,14 @@ const VendasLojas = () => {
                     )}
 
                     {NumberFormated(
-                      dados.Resultado[0].venda_dia_atacado -
-                        dados.Resultado[0].venda_dia_anterior_atacado <
+                      dados.venda_dia_atacado -
+                        dados.venda_dia_anterior_atacado <
                         0
-                        ? (dados.Resultado[0].venda_dia_atacado -
-                            dados.Resultado[0].venda_dia_anterior_atacado) *
+                        ? (dados.venda_dia_atacado -
+                            dados.venda_dia_anterior_atacado) *
                             -1
-                        : dados.Resultado[0].venda_dia_atacado -
-                            dados.Resultado[0].venda_dia_anterior_atacado
+                        : dados.venda_dia_atacado -
+                            dados.venda_dia_anterior_atacado
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -135,32 +133,27 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].venda_dia_varejo)}
-                  </span>
+                  <span>{NumberFormated(dados.venda_dia_varejo)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].venda_dia_varejo -
-                        dados.Resultado[0].venda_dia_anterior_varejo <
+                      dados.venda_dia_varejo - dados.venda_dia_anterior_varejo <
                       0
                     }
                   >
-                    {dados.Resultado[0].venda_dia_varejo -
-                      dados.Resultado[0].venda_dia_anterior_varejo <
+                    {dados.venda_dia_varejo - dados.venda_dia_anterior_varejo <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].venda_dia_varejo -
-                        dados.Resultado[0].venda_dia_anterior_varejo <
+                      dados.venda_dia_varejo - dados.venda_dia_anterior_varejo <
                         0
-                        ? (dados.Resultado[0].venda_dia_varejo -
-                            dados.Resultado[0].venda_dia_anterior_varejo) *
+                        ? (dados.venda_dia_varejo -
+                            dados.venda_dia_anterior_varejo) *
                             -1
-                        : dados.Resultado[0].venda_dia_varejo -
-                            dados.Resultado[0].venda_dia_anterior_varejo
+                        : dados.venda_dia_varejo -
+                            dados.venda_dia_anterior_varejo
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -169,32 +162,30 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].venda_dia_ecommerce)}
-                  </span>
+                  <span>{NumberFormated(dados.venda_dia_ecommerce)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].venda_dia_ecommerce -
-                        dados.Resultado[0].venda_dia_anterior_ecommerce <
+                      dados.venda_dia_ecommerce -
+                        dados.venda_dia_anterior_ecommerce <
                       0
                     }
                   >
-                    {dados.Resultado[0].venda_dia_ecommerce -
-                      dados.Resultado[0].venda_dia_anterior_ecommerce <
+                    {dados.venda_dia_ecommerce -
+                      dados.venda_dia_anterior_ecommerce <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].venda_dia_ecommerce -
-                        dados.Resultado[0].venda_dia_anterior_ecommerce <
+                      dados.venda_dia_ecommerce -
+                        dados.venda_dia_anterior_ecommerce <
                         0
-                        ? (dados.Resultado[0].venda_dia_ecommerce -
-                            dados.Resultado[0].venda_dia_anterior_ecommerce) *
+                        ? (dados.venda_dia_ecommerce -
+                            dados.venda_dia_anterior_ecommerce) *
                             -1
-                        : dados.Resultado[0].venda_dia_ecommerce -
-                            dados.Resultado[0].venda_dia_anterior_ecommerce
+                        : dados.venda_dia_ecommerce -
+                            dados.venda_dia_anterior_ecommerce
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -203,30 +194,19 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>{NumberFormated(dados.Resultado[0].venda_dia)}</span>
+                  <span>{NumberFormated(dados.venda_dia)}</span>
                   <ResumeCardItensInd
-                    $isNegative={
-                      dados.Resultado[0].venda_dia -
-                        dados.Resultado[0].venda_dia_anterior <
-                      0
-                    }
+                    $isNegative={dados.venda_dia - dados.venda_dia_anterior < 0}
                   >
-                    {dados.Resultado[0].venda_dia -
-                      dados.Resultado[0].venda_dia_anterior <
-                    0 ? (
+                    {dados.venda_dia - dados.venda_dia_anterior < 0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].venda_dia -
-                        dados.Resultado[0].venda_dia_anterior <
-                        0
-                        ? (dados.Resultado[0].venda_dia -
-                            dados.Resultado[0].venda_dia_anterior) *
-                            -1
-                        : dados.Resultado[0].venda_dia -
-                            dados.Resultado[0].venda_dia_anterior
+                      dados.venda_dia - dados.venda_dia_anterior < 0
+                        ? (dados.venda_dia - dados.venda_dia_anterior) * -1
+                        : dados.venda_dia - dados.venda_dia_anterior
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -249,32 +229,30 @@ const VendasLojas = () => {
             <Row>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].venda_mes_atacado)}
-                  </span>
+                  <span>{NumberFormated(dados.venda_mes_atacado)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].venda_mes_atacado -
-                        dados.Resultado[0].venda_mes_anterior_atacado <
+                      dados.venda_mes_atacado -
+                        dados.venda_mes_anterior_atacado <
                       0
                     }
                   >
-                    {dados.Resultado[0].venda_mes_atacado -
-                      dados.Resultado[0].venda_mes_anterior_atacado <
+                    {dados.venda_mes_atacado -
+                      dados.venda_mes_anterior_atacado <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].venda_mes_atacado -
-                        dados.Resultado[0].venda_mes_anterior_atacado <
+                      dados.venda_mes_atacado -
+                        dados.venda_mes_anterior_atacado <
                         0
-                        ? (dados.Resultado[0].venda_mes_atacado -
-                            dados.Resultado[0].venda_mes_anterior_atacado) *
+                        ? (dados.venda_mes_atacado -
+                            dados.venda_mes_anterior_atacado) *
                             -1
-                        : dados.Resultado[0].venda_mes_atacado -
-                            dados.Resultado[0].venda_mes_anterior_atacado
+                        : dados.venda_mes_atacado -
+                            dados.venda_mes_anterior_atacado
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -283,32 +261,27 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].venda_mes_varejo)}
-                  </span>
+                  <span>{NumberFormated(dados.venda_mes_varejo)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].venda_mes_varejo -
-                        dados.Resultado[0].venda_mes_anterior_varejo <
+                      dados.venda_mes_varejo - dados.venda_mes_anterior_varejo <
                       0
                     }
                   >
-                    {dados.Resultado[0].venda_mes_varejo -
-                      dados.Resultado[0].venda_mes_anterior_varejo <
+                    {dados.venda_mes_varejo - dados.venda_mes_anterior_varejo <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].venda_mes_varejo -
-                        dados.Resultado[0].venda_mes_anterior_varejo <
+                      dados.venda_mes_varejo - dados.venda_mes_anterior_varejo <
                         0
-                        ? (dados.Resultado[0].venda_mes_varejo -
-                            dados.Resultado[0].venda_mes_anterior_varejo) *
+                        ? (dados.venda_mes_varejo -
+                            dados.venda_mes_anterior_varejo) *
                             -1
-                        : dados.Resultado[0].venda_mes_varejo -
-                            dados.Resultado[0].venda_mes_anterior_varejo
+                        : dados.venda_mes_varejo -
+                            dados.venda_mes_anterior_varejo
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -317,32 +290,30 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].venda_mes_ecommerce)}
-                  </span>
+                  <span>{NumberFormated(dados.venda_mes_ecommerce)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].venda_mes_ecommerce -
-                        dados.Resultado[0].venda_mes_anterior_ecommerce <
+                      dados.venda_mes_ecommerce -
+                        dados.venda_mes_anterior_ecommerce <
                       0
                     }
                   >
-                    {dados.Resultado[0].venda_mes_ecommerce -
-                      dados.Resultado[0].venda_mes_anterior_ecommerce <
+                    {dados.venda_mes_ecommerce -
+                      dados.venda_mes_anterior_ecommerce <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].venda_mes_ecommerce -
-                        dados.Resultado[0].venda_mes_anterior_ecommerce <
+                      dados.venda_mes_ecommerce -
+                        dados.venda_mes_anterior_ecommerce <
                         0
-                        ? (dados.Resultado[0].venda_mes_ecommerce -
-                            dados.Resultado[0].venda_mes_anterior_ecommerce) *
+                        ? (dados.venda_mes_ecommerce -
+                            dados.venda_mes_anterior_ecommerce) *
                             -1
-                        : dados.Resultado[0].venda_mes_ecommerce -
-                            dados.Resultado[0].venda_mes_anterior_ecommerce
+                        : dados.venda_mes_ecommerce -
+                            dados.venda_mes_anterior_ecommerce
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -351,30 +322,19 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>{NumberFormated(dados.Resultado[0].venda_mes)}</span>
+                  <span>{NumberFormated(dados.venda_mes)}</span>
                   <ResumeCardItensInd
-                    $isNegative={
-                      dados.Resultado[0].venda_mes -
-                        dados.Resultado[0].venda_mes_anterior <
-                      0
-                    }
+                    $isNegative={dados.venda_mes - dados.venda_mes_anterior < 0}
                   >
-                    {dados.Resultado[0].venda_mes -
-                      dados.Resultado[0].venda_mes_anterior <
-                    0 ? (
+                    {dados.venda_mes - dados.venda_mes_anterior < 0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].venda_mes -
-                        dados.Resultado[0].venda_mes_anterior <
-                        0
-                        ? (dados.Resultado[0].venda_mes -
-                            dados.Resultado[0].venda_mes_anterior) *
-                            -1
-                        : dados.Resultado[0].venda_mes -
-                            dados.Resultado[0].venda_mes_anterior
+                      dados.venda_mes - dados.venda_mes_anterior < 0
+                        ? (dados.venda_mes - dados.venda_mes_anterior) * -1
+                        : dados.venda_mes - dados.venda_mes_anterior
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -397,32 +357,30 @@ const VendasLojas = () => {
             <Row>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].quant_pcs_mes_atacado)}
-                  </span>
+                  <span>{NumberFormated(dados.quant_pcs_mes_atacado)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].quant_pcs_mes_atacado -
-                        dados.Resultado[0].quant_pcs_mes_anterior_atacado <
+                      dados.quant_pcs_mes_atacado -
+                        dados.quant_pcs_mes_anterior_atacado <
                       0
                     }
                   >
-                    {dados.Resultado[0].quant_pcs_mes_atacado -
-                      dados.Resultado[0].quant_pcs_mes_anterior_atacado <
+                    {dados.quant_pcs_mes_atacado -
+                      dados.quant_pcs_mes_anterior_atacado <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].quant_pcs_mes_atacado -
-                        dados.Resultado[0].quant_pcs_mes_anterior_atacado <
+                      dados.quant_pcs_mes_atacado -
+                        dados.quant_pcs_mes_anterior_atacado <
                         0
-                        ? (dados.Resultado[0].quant_pcs_mes_atacado -
-                            dados.Resultado[0].quant_pcs_mes_anterior_atacado) *
+                        ? (dados.quant_pcs_mes_atacado -
+                            dados.quant_pcs_mes_anterior_atacado) *
                             -1
-                        : dados.Resultado[0].quant_pcs_mes_atacado -
-                            dados.Resultado[0].quant_pcs_mes_anterior_atacado
+                        : dados.quant_pcs_mes_atacado -
+                            dados.quant_pcs_mes_anterior_atacado
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -431,32 +389,30 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].quant_pcs_mes_varejo)}
-                  </span>
+                  <span>{NumberFormated(dados.quant_pcs_mes_varejo)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].quant_pcs_mes_varejo -
-                        dados.Resultado[0].quant_pcs_mes_anterior_varejo <
+                      dados.quant_pcs_mes_varejo -
+                        dados.quant_pcs_mes_anterior_varejo <
                       0
                     }
                   >
-                    {dados.Resultado[0].quant_pcs_mes_varejo -
-                      dados.Resultado[0].quant_pcs_mes_anterior_varejo <
+                    {dados.quant_pcs_mes_varejo -
+                      dados.quant_pcs_mes_anterior_varejo <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].quant_pcs_mes_varejo -
-                        dados.Resultado[0].quant_pcs_mes_anterior_varejo <
+                      dados.quant_pcs_mes_varejo -
+                        dados.quant_pcs_mes_anterior_varejo <
                         0
-                        ? (dados.Resultado[0].quant_pcs_mes_varejo -
-                            dados.Resultado[0].quant_pcs_mes_anterior_varejo) *
+                        ? (dados.quant_pcs_mes_varejo -
+                            dados.quant_pcs_mes_anterior_varejo) *
                             -1
-                        : dados.Resultado[0].quant_pcs_mes_varejo -
-                            dados.Resultado[0].quant_pcs_mes_anterior_varejo
+                        : dados.quant_pcs_mes_varejo -
+                            dados.quant_pcs_mes_anterior_varejo
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -465,33 +421,30 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>
-                    {NumberFormated(dados.Resultado[0].quant_pcs_mes_ecommerce)}
-                  </span>
+                  <span>{NumberFormated(dados.quant_pcs_mes_ecommerce)}</span>
                   <ResumeCardItensInd
                     $isNegative={
-                      dados.Resultado[0].quant_pcs_mes_ecommerce -
-                        dados.Resultado[0].quant_pcs_mes_anterior_ecommerce <
+                      dados.quant_pcs_mes_ecommerce -
+                        dados.quant_pcs_mes_anterior_ecommerce <
                       0
                     }
                   >
-                    {dados.Resultado[0].quant_pcs_mes_ecommerce -
-                      dados.Resultado[0].quant_pcs_mes_anterior_ecommerce <
+                    {dados.quant_pcs_mes_ecommerce -
+                      dados.quant_pcs_mes_anterior_ecommerce <
                     0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].quant_pcs_mes_ecommerce -
-                        dados.Resultado[0].quant_pcs_mes_anterior_ecommerce <
+                      dados.quant_pcs_mes_ecommerce -
+                        dados.quant_pcs_mes_anterior_ecommerce <
                         0
-                        ? (dados.Resultado[0].quant_pcs_mes_ecommerce -
-                            dados.Resultado[0]
-                              .quant_pcs_mes_anterior_ecommerce) *
+                        ? (dados.quant_pcs_mes_ecommerce -
+                            dados.quant_pcs_mes_anterior_ecommerce) *
                             -1
-                        : dados.Resultado[0].quant_pcs_mes_ecommerce -
-                            dados.Resultado[0].quant_pcs_mes_anterior_ecommerce
+                        : dados.quant_pcs_mes_ecommerce -
+                            dados.quant_pcs_mes_anterior_ecommerce
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -500,30 +453,19 @@ const VendasLojas = () => {
               </Col>
               <Col span={6}>
                 <ResumeCardItensCol>
-                  <span>{NumberFormated(dados.Resultado[0].pcs_mes)}</span>
+                  <span>{NumberFormated(dados.pcs_mes)}</span>
                   <ResumeCardItensInd
-                    $isNegative={
-                      dados.Resultado[0].pcs_mes -
-                        dados.Resultado[0].pcs_mes_anterior <
-                      0
-                    }
+                    $isNegative={dados.pcs_mes - dados.pcs_mes_anterior < 0}
                   >
-                    {dados.Resultado[0].pcs_mes -
-                      dados.Resultado[0].pcs_mes_anterior <
-                    0 ? (
+                    {dados.pcs_mes - dados.pcs_mes_anterior < 0 ? (
                       <HiMiniChevronDown />
                     ) : (
                       <HiMiniChevronUp />
                     )}
                     {NumberFormated(
-                      dados.Resultado[0].pcs_mes -
-                        dados.Resultado[0].pcs_mes_anterior <
-                        0
-                        ? (dados.Resultado[0].pcs_mes -
-                            dados.Resultado[0].pcs_mes_anterior) *
-                            -1
-                        : dados.Resultado[0].pcs_mes -
-                            dados.Resultado[0].pcs_mes_anterior
+                      dados.pcs_mes - dados.pcs_mes_anterior < 0
+                        ? (dados.pcs_mes - dados.pcs_mes_anterior) * -1
+                        : dados.pcs_mes - dados.pcs_mes_anterior
                     )}
                   </ResumeCardItensInd>
                   <Divider />
@@ -547,7 +489,7 @@ const VendasLojas = () => {
               <Col span={8}>
                 <ResumeCardItensCol>
                   <ResumeCardItensPM>
-                    {NumberFormatedBR(dados.Resultado[0].pm_atacado)}
+                    {NumberFormatedBR(dados.pm_atacado)}
                   </ResumeCardItensPM>
                   <Divider />
                   <span>Atacado</span>
@@ -556,7 +498,7 @@ const VendasLojas = () => {
               <Col span={8}>
                 <ResumeCardItensCol>
                   <ResumeCardItensPM>
-                    {NumberFormatedBR(dados.Resultado[0].pm_varejo)}
+                    {NumberFormatedBR(dados.pm_varejo)}
                   </ResumeCardItensPM>
                   <Divider />
                   <span>Varejo</span>
@@ -565,7 +507,7 @@ const VendasLojas = () => {
               <Col span={8}>
                 <ResumeCardItensCol>
                   <ResumeCardItensPM>
-                    {NumberFormatedBR(dados.Resultado[0].pm_ecommerce)}
+                    {NumberFormatedBR(dados.pm_ecommerce)}
                   </ResumeCardItensPM>
                   <Divider />
                   <span>Site</span>

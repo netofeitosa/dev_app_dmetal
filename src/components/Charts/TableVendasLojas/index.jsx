@@ -16,7 +16,7 @@ const TableVendasLojas = (props) => {
     }
   };
 
-  const dados = props.dados.Resultado[0].lojas.map((loja) => ({
+  const dados = props.dados.lojas.map((loja) => ({
     ...loja,
     venda_dia_loja_format: formatarValor(loja.venda_dia_loja),
     venda_mes_loja_format: formatarValor(loja.venda_mes_loja),

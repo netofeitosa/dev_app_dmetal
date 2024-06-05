@@ -3,7 +3,7 @@ import React from "react";
 import Chart from "react-apexcharts";
 
 const ChartVendasLojas = (props) => {
-  const dados = props.dados.Resultado[0];
+  const dados = props.dados;
 
   const vendaMesVarejo = parseFloat(dados.venda_mes_varejo);
   const vendaMesAnteriorVarejo = parseFloat(dados.venda_mes_anterior_varejo);
