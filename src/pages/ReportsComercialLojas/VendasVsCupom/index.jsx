@@ -32,8 +32,8 @@ const VendasVsCupom = () => {
   useEffect(() => {
     const getDados = async () => {
       try {
-        const response = await Api.get("/reportsVendasCupons");
-        setDados(response.data);
+        const response = await Api.get("/vendascupons");
+        setDados(response.data[0]);
         setRemoveLoading(true);
       } catch (error) {
         console.log(error.response.data.message);
@@ -60,14 +60,14 @@ const VendasVsCupom = () => {
             <Divider />
             <div>
               <span>Total Venda </span>
-              <span>{dados.Resultado[0].total_venda_format}</span>
+              <span>{dados.total_venda_format}</span>
             </div>
             <div>
               <span>Total Cupom</span>
-              <span>{dados.Resultado[0].total_cupom_format}</span>
+              <span>{dados.total_cupom_format}</span>
             </div>
             <div>
-              <span>{dados.Resultado[0].perc.toFixed(2)}%</span>
+              <span>{dados.perc}%</span>
             </div>
           </ResumeCol1>
 
@@ -78,14 +78,14 @@ const VendasVsCupom = () => {
             <Divider />
             <div>
               <span>Total Venda </span>
-              <span>{dados.Resultado[0].total_venda_ant_format}</span>
+              <span>{dados.total_venda_ant_format}</span>
             </div>
             <div>
               <span>Total Cupom</span>
-              <span>{dados.Resultado[0].total_cupom_ant_format}</span>
+              <span>{dados.total_cupom_ant_format}</span>
             </div>
             <div>
-              <span>{dados.Resultado[0].perc_ant.toFixed(2)}%</span>
+              <span>{dados.perc_ant}%</span>
             </div>
           </ResumeCol2>
         </ResumeCard>

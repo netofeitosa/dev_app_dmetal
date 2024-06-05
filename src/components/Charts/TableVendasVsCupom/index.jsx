@@ -15,7 +15,7 @@ const TableVendasVsCupom = (props) => {
     }
   };
 
-  const dados = props.dados.Resultado[0].lojas.map((loja) => ({
+  const dados = props.dados.lojas.map((loja) => ({
     ...loja,
     total_venda_format: formatarValor(loja.total_venda),
     total_cupom_format: formatarValor(loja.total_cupom),
