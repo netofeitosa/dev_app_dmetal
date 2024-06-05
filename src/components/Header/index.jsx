@@ -15,14 +15,14 @@ const Header = () => {
         <img src={logoPreta} alt="Logo" width="95" />
 
         <Link to="/Perfil">
-          {!auth.user?.image ? (
+          {!auth.user?.image_url ? (
             <HiOutlineUserCircle
               size={32}
               style={{ color: "var(--text)", strokeWidth: 1.4 }}
             />
           ) : (
             <img
-              src={auth.user?.image}
+              src={auth.user?.image_url}
               width={34}
               style={{ borderRadius: "50%" }}
             />

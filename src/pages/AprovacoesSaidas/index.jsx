@@ -17,7 +17,7 @@ const AprovacoesSaidas = () => {
   const getSaidas = async () => {
     setRemoveLoading(false);
     try {
-      const response = await Api.get("/saidas-avulsas");
+      const response = await Api.get("/saidas");
       setSaidas(response.data);
     } catch (error) {
       console.log(error);
@@ -40,7 +40,7 @@ const AprovacoesSaidas = () => {
       {!removeLoading ? (
         <Spinner />
       ) : (
-        <TableAprovacoesSaidas value={saidas.saidas} getSaidas={getSaidas} />
+        <TableAprovacoesSaidas value={saidas} getSaidas={getSaidas} />
       )}
     </Container>
   );

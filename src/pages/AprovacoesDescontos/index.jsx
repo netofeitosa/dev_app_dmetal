@@ -41,7 +41,7 @@ const AprovacoesDescontos = () => {
         <Spinner />
       ) : (
         <TableAprovacoesDescontos
-          value={descontos.descontos}
+          value={descontos}
           getDescontos={getDescontos}
         />
       )}

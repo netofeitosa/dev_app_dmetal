@@ -40,10 +40,7 @@ const AprovacoesDespesas = () => {
       {!removeLoading ? (
         <Spinner />
       ) : (
-        <TableAprovacoesDespesas
-          value={despesas.despesas}
-          getDespesas={getDespesas}
-        />
+        <TableAprovacoesDespesas value={despesas} getDespesas={getDespesas} />
       )}
     </Container>
   );

@@ -30,7 +30,7 @@ const Aprovacoes = () => {
     const getHomeAprovacoes = async () => {
       try {
         const response = await Api.get("/aprovacoes");
-        setDadosHome(response.data);
+        setDadosHome(response.data[0]);
         setRemoveLoading(true);
       } catch (error) {
         console.log(error.response.data.message);

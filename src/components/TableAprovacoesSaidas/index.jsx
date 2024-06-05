@@ -60,7 +60,7 @@ const TableAprovacoesSaidas = (props) => {
     });
 
     try {
-      const response = await Api.post("/saidas-avulsas", data);
+      const response = await Api.post("/aprovacoes", data);
       messageApi.open({
         key,
         type: "success",
@@ -72,7 +72,7 @@ const TableAprovacoesSaidas = (props) => {
       messageApi.open({
         key,
         type: "error",
-        content: error.response.data.message,
+        content: error.response.data.error,
         duration: 2,
         onClose: () => props.getSaidas(),
       });

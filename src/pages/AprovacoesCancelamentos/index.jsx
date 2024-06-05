@@ -42,7 +42,7 @@ const AprovacoesCancelamentos = () => {
         <Spinner />
       ) : (
         <TableAprovacoesCancelamentos
-          value={cancelamentos.cancelamentos}
+          value={cancelamentos}
           getCancelamentos={getCancelamentos}
         />
       )}

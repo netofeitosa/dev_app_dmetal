@@ -26,10 +26,10 @@ const User = () => {
       transition={{ duration: 0.1 }}
     >
       <div>
-        {!auth.user?.image ? (
+        {!auth.user?.image_url ? (
           <Avatar size={65} icon={<TbUserEdit />} />
         ) : (
-          <img src={auth.user?.image} />
+          <img src={auth.user?.image_url} />
         )}
       </div>
       <ContainerUserData>
