@@ -29,4 +29,58 @@ export const useApi = () => ({
   signout: async () => {
     return true;
   },
+
+  getAprovacoes: async () => {
+    try {
+      const response = await api.get("/aprovacoes");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  postAprovacoes: async (data) => {
+    try {
+      const response = await api.post("/aprovacoes", data);
+      return response.data;
+    } catch (error) {
+      return error.response.data.error;
+    }
+  },
+
+  getDespesas: async () => {
+    try {
+      const response = await api.get("/despesas");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  getDescontos: async () => {
+    try {
+      const response = await api.get("/descontos");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  getCancelamentos: async () => {
+    try {
+      const response = await api.get("/cancelamentos");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  getSaidas: async () => {
+    try {
+      const response = await api.get("/saidas");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
 });

@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Api } from "../../services/api";
+import { useApi } from "../../hooks/useApi";
 import Spinner from "../../components/Spinner";
 import TableAprovacoesCancelamentos from "../../components/TableAprovacoesCancelamentos";
 
@@ -10,6 +10,7 @@ const AprovacoesCancelamentos = () => {
   const [cancelamentos, setCancelamentos] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
   const { setPageTitle } = useOutletContext();
+  const api = useApi();
 
   useLayoutEffect(() => {
     setPageTitle("Cancelamentos");
@@ -18,8 +19,8 @@ const AprovacoesCancelamentos = () => {
   const getCancelamentos = async () => {
     setRemoveLoading(false);
     try {
-      const response = await Api.get("/cancelamentos");
-      setCancelamentos(response.data);
+      const response = await api.getCancelamentos();
+      setCancelamentos(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -42,7 +43,7 @@ const AprovacoesCancelamentos = () => {
         <Spinner />
       ) : (
         <TableAprovacoesCancelamentos
-          value={cancelamentos}
+          value={cancelamentos ? cancelamentos : []}
           getCancelamentos={getCancelamentos}
         />
       )}

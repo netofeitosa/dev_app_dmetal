@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Api } from "../../services/api";
+import { useApi } from "../../hooks/useApi";
 import Spinner from "../../components/Spinner";
 import TableAprovacoesSaidas from "../../components/TableAprovacoesSaidas";
 import { Container } from "./aprovacoessaidas.style";
@@ -9,6 +9,7 @@ const AprovacoesSaidas = () => {
   const [saidas, setSaidas] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
   const { setPageTitle } = useOutletContext();
+  const api = useApi();
 
   useLayoutEffect(() => {
     setPageTitle("Saídas Avulsas");
@@ -17,8 +18,8 @@ const AprovacoesSaidas = () => {
   const getSaidas = async () => {
     setRemoveLoading(false);
     try {
-      const response = await Api.get("/saidas");
-      setSaidas(response.data);
+      const response = await api.getSaidas();
+      setSaidas(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -40,7 +41,10 @@ const AprovacoesSaidas = () => {
       {!removeLoading ? (
         <Spinner />
       ) : (
-        <TableAprovacoesSaidas value={saidas} getSaidas={getSaidas} />
+        <TableAprovacoesSaidas
+          value={saidas ? saidas : []}
+          getSaidas={getSaidas}
+        />
       )}
     </Container>
   );

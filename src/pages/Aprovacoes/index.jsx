@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Divider } from "antd";
+import { useApi } from "../../hooks/useApi";
 
 import {
   HiOutlineReceiptPercent,
@@ -11,7 +12,7 @@ import {
 } from "react-icons/hi2";
 
 import Spinner from "../../components/Spinner";
-import { Api } from "../../services/api";
+
 import {
   ContainerAprovacoes,
   ContainerAprovacoesChevron,
@@ -25,18 +26,20 @@ const Aprovacoes = () => {
   const [dadosHome, setDadosHome] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
   const Navigate = useNavigate();
+  const api = useApi();
 
   useEffect(() => {
-    const getHomeAprovacoes = async () => {
+    const getAprovacoes = async () => {
       try {
-        const response = await Api.get("/aprovacoes");
-        setDadosHome(response.data[0]);
-        setRemoveLoading(true);
+        const [response] = await api.getAprovacoes();
+        setDadosHome(response);
       } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error);
+      } finally {
+        setRemoveLoading(true);
       }
     };
-    getHomeAprovacoes();
+    getAprovacoes();
   }, []);
 
   return (
@@ -61,7 +64,7 @@ const Aprovacoes = () => {
             </div>
 
             <div>
-              <span>{dadosHome?.despesas}</span>
+              <span>{!dadosHome ? 0 : dadosHome.despesas}</span>
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
@@ -80,7 +83,7 @@ const Aprovacoes = () => {
               <span>Desconto de Prevenda</span>
             </div>
             <div>
-              <span>{dadosHome?.descontos}</span>
+              <span>{!dadosHome ? 0 : dadosHome.descontos}</span>
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
@@ -98,7 +101,7 @@ const Aprovacoes = () => {
               <span>Cancelamento de Prevenda</span>
             </div>
             <div>
-              <span>{dadosHome?.cancelamentos}</span>
+              <span>{!dadosHome ? 0 : dadosHome.cancelamentos}</span>
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}
@@ -119,7 +122,7 @@ const Aprovacoes = () => {
               <span>Saída Avulsas</span>
             </div>
             <div>
-              <span>{dadosHome?.saidas}</span>
+              <span>{!dadosHome ? 0 : dadosHome.saidas}</span>
               <ContainerAprovacoesChevron>
                 <HiMiniChevronRight
                   size={24}

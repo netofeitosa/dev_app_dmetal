@@ -1,14 +1,15 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Api } from "../../services/api";
 import Spinner from "../../components/Spinner";
 import TableAprovacoesDespesas from "../../components/TableAprovacoesDespesas";
 import { Container } from "./aprovacoesdespesas.style";
 import { useOutletContext } from "react-router-dom";
+import { useApi } from "../../hooks/useApi";
 
 const AprovacoesDespesas = () => {
   const [despesas, setDespesas] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
   const { setPageTitle } = useOutletContext();
+  const api = useApi();
 
   useLayoutEffect(() => {
     setPageTitle("Despesas");
@@ -17,8 +18,8 @@ const AprovacoesDespesas = () => {
   const getDespesas = async () => {
     setRemoveLoading(false);
     try {
-      const response = await Api.get("/despesas");
-      setDespesas(response.data);
+      const response = await api.getDespesas();
+      setDespesas(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -40,7 +41,10 @@ const AprovacoesDespesas = () => {
       {!removeLoading ? (
         <Spinner />
       ) : (
-        <TableAprovacoesDespesas value={despesas} getDespesas={getDespesas} />
+        <TableAprovacoesDespesas
+          value={despesas ? despesas : []}
+          getDespesas={getDespesas}
+        />
       )}
     </Container>
   );

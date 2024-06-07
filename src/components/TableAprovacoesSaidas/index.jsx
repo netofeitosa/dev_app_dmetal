@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Api } from "../../services/api";
+import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { Table, Button, Divider, message } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
@@ -14,6 +14,7 @@ import {
 
 const TableAprovacoesSaidas = (props) => {
   const auth = useContext(AuthContext);
+  const api = useApi();
 
   const [messageApi, contextHolder] = message.useMessage();
   const key = "updatable";
@@ -59,20 +60,21 @@ const TableAprovacoesSaidas = (props) => {
       content: "Aguarde...",
     });
 
-    try {
-      const response = await Api.post("/aprovacoes", data);
+    const response = await api.postAprovacoes(data);
+
+    if (response.message) {
       messageApi.open({
         key,
         type: "success",
-        content: response.data.message,
+        content: response.message,
         duration: 2,
         onClose: () => props.getSaidas(),
       });
-    } catch (error) {
+    } else {
       messageApi.open({
         key,
         type: "error",
-        content: error.response.data.error,
+        content: response,
         duration: 2,
         onClose: () => props.getSaidas(),
       });
