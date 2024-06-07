@@ -10,26 +10,12 @@ export const RequireAuth = ({ children }) => {
 
   const [loading, setLoading] = useState(true);
 
-  // if (!auth.user) {
-  //   navigate("/app_dmetal_dev");
-  //   return null;
-  // }
-
-  // useEffect(() => {
-  //   if (!auth.user) {
-  //     navigate("/app_dmetal_dev");
-  //   }
-  // }, [auth.user, navigate]);
-
   useEffect(() => {
     if (auth.isLoading) {
-      // Aguarda até que a autenticação seja carregada
       setLoading(true);
     } else if (!auth.user) {
-      // Redireciona se não houver usuário autenticado
       navigate("/");
     } else {
-      // Se o usuário está autenticado, remove o estado de carregamento
       setLoading(false);
     }
   }, [auth.user, auth.isLoading, navigate]);

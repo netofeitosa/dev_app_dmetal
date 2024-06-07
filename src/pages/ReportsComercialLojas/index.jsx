@@ -1,4 +1,5 @@
-import React, { useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { Divider } from "antd";
 
 import {
@@ -18,6 +19,9 @@ import {
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 const ReportsComercialLojas = () => {
+  const auth = useContext(AuthContext);
+  const roles = auth.user.roles;
+
   const Navigate = useNavigate();
   const { setPageTitle } = useOutletContext();
 
@@ -39,10 +43,14 @@ const ReportsComercialLojas = () => {
             <span>Vendas x Cupom</span>
           </SectionCol1>
           <SectionCol2>
-            <HiMiniChevronRight
-              size={24}
-              onClick={() => [Navigate("/vendasxcupom")]}
-            />
+            {roles.includes("vendasxcupom") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                onClick={() => [Navigate("/vendasxcupom")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
         <SectionDivider>
@@ -54,8 +62,14 @@ const ReportsComercialLojas = () => {
             <span>Vendas Gerais</span>
           </SectionCol1>
           <SectionCol2>
-            {/* <HiMiniChevronRight size={24} /> */}
-            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            {roles.includes("vendasgerais") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                //onClick={() => [Navigate("/vendasgerais")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
         <SectionDivider>
@@ -67,10 +81,14 @@ const ReportsComercialLojas = () => {
             <span>Vendas Lojas</span>
           </SectionCol1>
           <SectionCol2>
-            <HiMiniChevronRight
-              size={24}
-              onClick={() => [Navigate("/vendaslojas")]}
-            />
+            {roles.includes("vendaslojas") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                onClick={() => [Navigate("/vendaslojas")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
         <SectionDivider>
@@ -82,8 +100,14 @@ const ReportsComercialLojas = () => {
             <span>Estoque Geral</span>
           </SectionCol1>
           <SectionCol2>
-            {/* <HiMiniChevronRight size={24} /> */}
-            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            {roles.includes("estoquegeral") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                //onClick={() => [Navigate("/estoquegeral")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
       </Section>

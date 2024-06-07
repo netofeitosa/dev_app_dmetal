@@ -1,4 +1,5 @@
-import React, { useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { Divider } from "antd";
 
 import {
@@ -15,9 +16,13 @@ import {
   SectionDivider,
   SectionLine,
 } from "./reportscomercialrepresentantes.style";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const ReportsComercialRepresentantes = () => {
+  const auth = useContext(AuthContext);
+  const roles = auth.user.roles;
+
+  const Navigate = useNavigate();
   const { setPageTitle } = useOutletContext();
 
   useLayoutEffect(() => {
@@ -38,8 +43,14 @@ const ReportsComercialRepresentantes = () => {
             <span>Dmetal</span>
           </SectionCol1>
           <SectionCol2>
-            {/* <HiMiniChevronRight size={24} /> */}
-            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            {roles.includes("vendasrepdmetal") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                //onClick={() => [Navigate("/vendasrepdmetal")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
         <SectionDivider>
@@ -51,8 +62,14 @@ const ReportsComercialRepresentantes = () => {
             <span>Chica Fulô</span>
           </SectionCol1>
           <SectionCol2>
-            {/* <HiMiniChevronRight size={24} /> */}
-            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            {roles.includes("vendasrepchica") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                //onClick={() => [Navigate("/vendasrepchica")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
         <SectionDivider>
@@ -64,8 +81,15 @@ const ReportsComercialRepresentantes = () => {
             <span>Solicitação de Faturamento</span>
           </SectionCol1>
           <SectionCol2>
-            {/* <HiMiniChevronRight size={24} /> */}
-            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            {roles.includes("solicitacaofaturamento") ||
+            roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                //onClick={() => [Navigate("/solicitacaofaturamento")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
       </Section>

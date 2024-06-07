@@ -1,4 +1,5 @@
-import React, { useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import {
@@ -16,6 +17,8 @@ import {
 } from "./reportsindustrial.style";
 
 const ReportsIndustrial = () => {
+  const auth = useContext(AuthContext);
+  const roles = auth.user.roles;
   const Navigate = useNavigate();
   const { setPageTitle } = useOutletContext();
 
@@ -37,8 +40,14 @@ const ReportsIndustrial = () => {
             <span>Controle de Facções</span>
           </SectionCol1>
           <SectionCol2>
-            {/* <HiMiniChevronRight size={24} /> */}
-            <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            {roles.includes("controlefaccoes") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                //onClick={() => [Navigate("/controlefaccoes")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
           </SectionCol2>
         </SectionLine>
       </Section>
