@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Api } from "../../../services/api";
+import { useApi } from "../../../hooks/useApi";
 import Spinner from "../../../components/Spinner";
 import ChartVendasVsCupom from "../../../components/Charts/ChartVendasVsCupom";
 import {
@@ -24,6 +24,7 @@ const VendasVsCupom = () => {
   const [dados, setDados] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
   const { setPageTitle } = useOutletContext();
+  const api = useApi();
 
   useLayoutEffect(() => {
     setPageTitle("Vendas x Cupom");
@@ -32,8 +33,8 @@ const VendasVsCupom = () => {
   useEffect(() => {
     const getDados = async () => {
       try {
-        const response = await Api.get("/vendascupons");
-        setDados(response.data[0]);
+        const [response] = await api.getVendasCupons();
+        setDados(response);
         setRemoveLoading(true);
       } catch (error) {
         console.log(error.response.data.message);

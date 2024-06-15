@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
-import { Api } from "../../../services/api";
+import { useApi } from "../../../hooks/useApi";
 import ChartVendasLojas from "../../../components/Charts/ChartVendasLojas";
 import TableVendasLojas from "../../../components/Charts/TableVendasLojas";
 import {
@@ -25,6 +25,7 @@ const VendasLojas = () => {
   const [dados, setDados] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
   const { setPageTitle } = useOutletContext();
+  const api = useApi();
 
   useLayoutEffect(() => {
     setPageTitle("Vendas Lojas");
@@ -33,8 +34,8 @@ const VendasLojas = () => {
   useEffect(() => {
     const getDados = async () => {
       try {
-        const response = await Api.get("/vendaslojas");
-        setDados(response.data[0]);
+        const [response] = await api.getVendasLojas();
+        setDados(response);
         setRemoveLoading(true);
       } catch (error) {
         console.log(error.response.data.message);

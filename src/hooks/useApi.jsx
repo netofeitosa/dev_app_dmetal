@@ -83,4 +83,22 @@ export const useApi = () => ({
       return null;
     }
   },
+
+  getVendasLojas: async () => {
+    try {
+      const response = await api.get("/vendaslojas");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
+  getVendasCupons: async () => {
+    try {
+      const response = await api.get("/vendascupons");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
 });
