@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Divider } from "antd";
 import { useApi } from "../../hooks/useApi";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 import {
   HiOutlineReceiptPercent,
@@ -9,6 +10,7 @@ import {
   HiOutlineArrowsRightLeft,
   HiOutlineXCircle,
   HiMiniChevronRight,
+  HiOutlineLockClosed,
 } from "react-icons/hi2";
 
 import Spinner from "../../components/Spinner";
@@ -27,6 +29,8 @@ const Aprovacoes = () => {
   const [removeLoading, setRemoveLoading] = useState(false);
   const Navigate = useNavigate();
   const api = useApi();
+  const auth = useContext(AuthContext);
+  const roles = auth.user ? auth.user.roles : [];
 
   useEffect(() => {
     const getAprovacoes = async () => {
@@ -64,13 +68,22 @@ const Aprovacoes = () => {
             </div>
 
             <div>
-              <span>{!dadosHome ? 0 : dadosHome.despesas}</span>
-              <ContainerAprovacoesChevron>
-                <HiMiniChevronRight
-                  size={24}
-                  onClick={() => [Navigate("/despesas")]}
-                />
-              </ContainerAprovacoesChevron>
+              {roles.includes("aprovacoesdespesas") ||
+              roles.includes("admin") ? (
+                <>
+                  <span>{!dadosHome ? 0 : dadosHome.despesas}</span>
+                  <ContainerAprovacoesChevron>
+                    <HiMiniChevronRight
+                      size={24}
+                      onClick={() => [Navigate("/despesas")]}
+                    />
+                  </ContainerAprovacoesChevron>
+                </>
+              ) : (
+                <ContainerAprovacoesChevron>
+                  <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+                </ContainerAprovacoesChevron>
+              )}
             </div>
           </ContainerAprovacoesLinha>
           <ContainerAprovacoesDivider>
@@ -83,13 +96,22 @@ const Aprovacoes = () => {
               <span>Desconto de Prevenda</span>
             </div>
             <div>
-              <span>{!dadosHome ? 0 : dadosHome.descontos}</span>
-              <ContainerAprovacoesChevron>
-                <HiMiniChevronRight
-                  size={24}
-                  onClick={() => [Navigate("/descontos")]}
-                />
-              </ContainerAprovacoesChevron>
+              {roles.includes("aprovacoesdescontos") ||
+              roles.includes("admin") ? (
+                <>
+                  <span>{!dadosHome ? 0 : dadosHome.descontos}</span>
+                  <ContainerAprovacoesChevron>
+                    <HiMiniChevronRight
+                      size={24}
+                      onClick={() => [Navigate("/descontos")]}
+                    />
+                  </ContainerAprovacoesChevron>
+                </>
+              ) : (
+                <ContainerAprovacoesChevron>
+                  <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+                </ContainerAprovacoesChevron>
+              )}
             </div>
           </ContainerAprovacoesLinha>
           <ContainerAprovacoesDivider>
@@ -101,13 +123,22 @@ const Aprovacoes = () => {
               <span>Cancelamento de Prevenda</span>
             </div>
             <div>
-              <span>{!dadosHome ? 0 : dadosHome.cancelamentos}</span>
-              <ContainerAprovacoesChevron>
-                <HiMiniChevronRight
-                  size={24}
-                  onClick={() => [Navigate("/cancelamentos")]}
-                />
-              </ContainerAprovacoesChevron>
+              {roles.includes("aprovacoescancelamentos") ||
+              roles.includes("admin") ? (
+                <>
+                  <span>{!dadosHome ? 0 : dadosHome.cancelamentos}</span>
+                  <ContainerAprovacoesChevron>
+                    <HiMiniChevronRight
+                      size={24}
+                      onClick={() => [Navigate("/cancelamentos")]}
+                    />
+                  </ContainerAprovacoesChevron>
+                </>
+              ) : (
+                <ContainerAprovacoesChevron>
+                  <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+                </ContainerAprovacoesChevron>
+              )}
             </div>
           </ContainerAprovacoesLinha>
           <ContainerAprovacoesDivider>
@@ -122,13 +153,21 @@ const Aprovacoes = () => {
               <span>Saída Avulsas</span>
             </div>
             <div>
-              <span>{!dadosHome ? 0 : dadosHome.saidas}</span>
-              <ContainerAprovacoesChevron>
-                <HiMiniChevronRight
-                  size={24}
-                  onClick={() => [Navigate("/saidasavulsas")]}
-                />
-              </ContainerAprovacoesChevron>
+              {roles.includes("aprovacoessaidas") || roles.includes("admin") ? (
+                <>
+                  <span>{!dadosHome ? 0 : dadosHome.saidas}</span>
+                  <ContainerAprovacoesChevron>
+                    <HiMiniChevronRight
+                      size={24}
+                      onClick={() => [Navigate("/saidasavulsas")]}
+                    />
+                  </ContainerAprovacoesChevron>
+                </>
+              ) : (
+                <ContainerAprovacoesChevron>
+                  <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+                </ContainerAprovacoesChevron>
+              )}
             </div>
           </ContainerAprovacoesLinha>
         </ContainerAprovacoesDetalhes>

@@ -16,11 +16,12 @@ import {
   SectionDivider,
   SectionLine,
 } from "./reportscomerciallojas.style";
+
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 const ReportsComercialLojas = () => {
   const auth = useContext(AuthContext);
-  const roles = auth.user.roles;
+  const roles = auth.user ? auth.user.roles : [];
 
   const Navigate = useNavigate();
   const { setPageTitle } = useOutletContext();

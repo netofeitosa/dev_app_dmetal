@@ -27,7 +27,7 @@ export const SectionLine = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 7px 0px 12px;
+  padding: 0px 10px 0px 12px;
 
   & div:nth-child(1) {
     display: flex;
