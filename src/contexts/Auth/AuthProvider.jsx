@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { useApi } from "../../hooks/useApi";
+import { message } from "antd";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -16,6 +17,10 @@ export const AuthProvider = ({ children }) => {
         if (data) {
           setUser(data);
         } else {
+          message.error({
+            content: "Token expirado!",
+            duration: 2,
+          });
           signout();
         }
       } else {
