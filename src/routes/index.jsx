@@ -16,6 +16,7 @@ import ReportsIndustrial from "../pages/ReportsIndustrial";
 import ReportsComercialRepresentantes from "../pages/ReportsComercialRepresentantes";
 import VendasVsCupom from "../pages/ReportsComercialLojas/VendasVsCupom";
 import VendasLojas from "../pages/ReportsComercialLojas/VendasLojas";
+import VendasGerais from "../pages/ReportsComercialLojas/VendasGerais";
 import PageBase from "../pages/PageBase";
 import PageBaseBack from "../pages/PageBaseBack";
 
@@ -133,6 +134,14 @@ const AppRouter = () => {
             element={
               <RequireAuth>
                 <VendasLojas />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/vendasgerais"
+            element={
+              <RequireAuth>
+                <VendasGerais />
               </RequireAuth>
             }
           ></Route>

@@ -101,4 +101,13 @@ export const useApi = () => ({
       return null;
     }
   },
+
+  getVendasGerais: async () => {
+    try {
+      const response = await api.get("/vendasmes");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
 });

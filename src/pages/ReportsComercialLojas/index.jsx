@@ -66,7 +66,7 @@ const ReportsComercialLojas = () => {
             {roles.includes("vendasgerais") || roles.includes("admin") ? (
               <HiMiniChevronRight
                 size={24}
-                //onClick={() => [Navigate("/vendasgerais")]}
+                onClick={() => [Navigate("/vendasgerais")]}
               />
             ) : (
               <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
