@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import Spinner from "../../components/Spinner";
-import TableAprovacoesCancelamentos from "../../components/TableAprovacoesCancelamentos";
+import TableAprovacoesCancelamentos from "../../components/Tables/TableAprovacoesCancelamentos";
 
 import { Container } from "./aprovacoescancelamentos.style";
 import { useOutletContext } from "react-router-dom";

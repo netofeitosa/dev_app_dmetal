@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
-import TableAprovacoesDespesas from "../../components/TableAprovacoesDespesas";
+import TableAprovacoesDespesas from "../../components/Tables/TableAprovacoesDespesas";
 import { Container } from "./aprovacoesdespesas.style";
 import { useOutletContext } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";

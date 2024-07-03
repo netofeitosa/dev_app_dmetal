@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { useApi } from "../../hooks/useApi";
-import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { useApi } from "../../../hooks/useApi";
+import { AuthContext } from "../../../contexts/Auth/AuthContext";
 import { Table, Button, Divider, message } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import {
@@ -10,9 +10,9 @@ import {
   ContainerObservacoesDetalhes,
   Header,
   Title,
-} from "./tableaprovacoessaidas.style";
+} from "./tableaprovacoescancelamentos.style";
 
-const TableAprovacoesSaidas = (props) => {
+const TableAprovacoesCancelamentos = (props) => {
   const auth = useContext(AuthContext);
   const api = useApi();
 
@@ -21,35 +21,35 @@ const TableAprovacoesSaidas = (props) => {
 
   const columns = [
     {
-      title: "Registro",
+      title: "Prevenda",
       dataIndex: "registro",
       key: "registro",
       sorter: (a, b) => a.registro - b.registro,
     },
     {
+      title: "Loja",
+      dataIndex: "empresa",
+      key: "empresa",
+      sorter: (a, b) => a.empresa - b.empresa,
+    },
+    {
       title: "Data",
-      dataIndex: "data",
-      key: "data",
+      dataIndex: "movimento",
+      key: "movimento",
     },
     {
-      title: "Filial",
-      dataIndex: "filial",
-      key: "filial",
-      sorter: (a, b) => a.filial - b.filial,
-    },
-    {
-      title: "Qtde",
-      dataIndex: "quantidade",
-      key: "quantidade",
-      sorter: (a, b) => a.quantidade - b.quantidade,
+      title: "Valor",
+      dataIndex: "valor",
+      key: "valor",
+      sorter: (a, b) => a.valor_2 - b.valor_2,
     },
   ];
 
-  const postSaidas = async (saida, autorizado) => {
+  const postCancelamentos = async (cancelamento, autorizado) => {
     const data = {
-      registro: saida,
-      cod_origem: 4,
-      origem: "SAIDAS_AVULSAS",
+      registro: cancelamento,
+      cod_origem: 3,
+      origem: "CANCELAMENTO_PREVENDAS",
       usuario: auth.user.login,
       autorizado: autorizado,
     };
@@ -68,7 +68,7 @@ const TableAprovacoesSaidas = (props) => {
         type: "success",
         content: response.message,
         duration: 2,
-        onClose: () => props.getSaidas(),
+        onClose: () => props.getCancelamentos(),
       });
     } else {
       messageApi.open({
@@ -76,7 +76,7 @@ const TableAprovacoesSaidas = (props) => {
         type: "error",
         content: response,
         duration: 2,
-        onClose: () => props.getSaidas(),
+        onClose: () => props.getCancelamentos(),
       });
     }
   };
@@ -88,8 +88,10 @@ const TableAprovacoesSaidas = (props) => {
       title={() => (
         <Header>
           <Title>
-            <span>Saídas Avulsas</span>
-            <span>Aprovação de saídas avulsas realizadas no ERP</span>
+            <span>Cancelamento de Prevendas</span>
+            <span>
+              Aprovação de cancelamento de prevenda realizada pelas lojas
+            </span>
           </Title>
         </Header>
       )}
@@ -101,15 +103,12 @@ const TableAprovacoesSaidas = (props) => {
             </Divider>
             <ContainerObservacoesDetalhes>
               <div>
-                <span>Usuário</span>
-                <span>{record.usuario}</span>
+                <span>Nome Fantasia</span>
+                <span>{record.nome_fantasia}</span>
               </div>
-            </ContainerObservacoesDetalhes>
-            <Divider orientation="center"></Divider>
-            <ContainerObservacoesDetalhes>
               <div>
-                <span>Centro de Estoque</span>
-                <span>{record.centro_estoque}</span>
+                <span>Valor</span>
+                <span>{record.valor}</span>
               </div>
             </ContainerObservacoesDetalhes>
             <Divider orientation="center"></Divider>
@@ -133,7 +132,7 @@ const TableAprovacoesSaidas = (props) => {
                   borderColor: "green",
                   color: "green",
                 }}
-                onClick={() => postSaidas(record.registro, 1)}
+                onClick={() => postCancelamentos(record.registro, 1)}
               >
                 Aprovar
               </Button>
@@ -143,7 +142,7 @@ const TableAprovacoesSaidas = (props) => {
                 style={{
                   padding: "0px 10px",
                 }}
-                onClick={() => postSaidas(record.registro, 2)}
+                onClick={() => postCancelamentos(record.registro, 2)}
                 danger
               >
                 Negar
@@ -162,4 +161,4 @@ const TableAprovacoesSaidas = (props) => {
   );
 };
 
-export default TableAprovacoesSaidas;
+export default TableAprovacoesCancelamentos;

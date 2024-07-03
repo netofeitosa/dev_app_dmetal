@@ -2,10 +2,10 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useApi } from "../../../hooks/useApi";
 import Spinner from "../../../components/Spinner";
 import ChartVendasVsCupom from "../../../components/Charts/ChartVendasVsCupom";
+import TableVendasVsCupom from "../../../components/Tables/TableVendasVsCupom";
 import {
   Chart,
   ChartResume,
-  ChartTitle,
   Details,
   Resume,
   ResumeCard,
@@ -17,7 +17,7 @@ import {
   Table,
 } from "./vendasvscupom.style";
 import { Divider, FloatButton } from "antd";
-import TableVendasVsCupom from "../../../components/Charts/TableVendasVsCupom";
+
 import { useOutletContext } from "react-router-dom";
 
 const VendasVsCupom = () => {

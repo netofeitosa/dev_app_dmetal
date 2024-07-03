@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
 import { useApi } from "../../../hooks/useApi";
 import ChartVendasLojas from "../../../components/Charts/ChartVendasLojas";
-import TableVendasLojas from "../../../components/Charts/TableVendasLojas";
+import TableVendasLojas from "../../../components/Tables/TableVendasLojas";
 import {
   Chart,
   ChartResume,
@@ -528,7 +528,12 @@ const VendasLojas = () => {
           Detalhes
         </Divider>
       </SectionDivider>
-      <Table>
+      <Table
+        initial={{ opacity: 0, x: 200 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}
+        transition={{ duration: 0.1, delay: 0.3 }}
+      >
         <TableVendasLojas dados={dados}></TableVendasLojas>
         <FloatButton.BackTop />
       </Table>

@@ -3,8 +3,16 @@ import { useOutletContext } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
 import { useApi } from "../../../hooks/useApi";
 
-import { Section, ChartResume, Chart } from "./vendasgerais.style";
+import {
+  Section,
+  ChartResume,
+  Chart,
+  SectionDivider,
+  Table,
+} from "./vendasgerais.style";
 import ChartVendasGerais from "../../../components/Charts/ChartVendasGerais";
+import TableVendasGerais from "../../../components/Tables/TableVendasGerais";
+import { Divider, FloatButton } from "antd";
 
 const VendasGerais = () => {
   const [dados, setDados] = useState();
@@ -55,6 +63,25 @@ const VendasGerais = () => {
           <ChartVendasGerais dados={dados} />
         </Chart>
       </ChartResume>
+      <SectionDivider
+        initial={{ opacity: 0, x: 200 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}
+        transition={{ duration: 0.1, delay: 0.2 }}
+      >
+        <Divider orientation="center" plain>
+          Detalhes
+        </Divider>
+      </SectionDivider>
+      <Table
+        initial={{ opacity: 0, x: 200 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}
+        transition={{ duration: 0.1, delay: 0.2 }}
+      >
+        <TableVendasGerais dados={dados}></TableVendasGerais>
+        <FloatButton.BackTop />
+      </Table>
     </Section>
   );
 };

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../Theme";
+import { theme } from "../../../Theme";
 
 export const Header = styled.div`
   display: flex;
@@ -70,6 +70,16 @@ export const ContainerObservacoesDescricao = styled.div`
 export const ContainerObservacoesActions = styled.div`
   display: flex;
   align-items: center;
-  justify-content: end;
-  gap: 5px;
+  justify-content: space-between;
+
+  & div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  & div:nth-child(2) {
+    display: flex;
+    align-items: center;
+  }
 `;
