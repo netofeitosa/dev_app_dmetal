@@ -14,6 +14,8 @@ export const ContainerLogin = styled(motion.div)`
 `;
 
 export const ContainerLoginHeader = styled.div`
+  box-shadow: ${({ Theme }) => theme.color.boxShadow};
+  border-bottom: 1px solid #eeeeee;
   width: 100%;
   height: 25%;
   display: flex;
@@ -21,18 +23,18 @@ export const ContainerLoginHeader = styled.div`
   justify-content: center;
 `;
 
-export const ContainerLoginWave = styled.div`
-  width: 100%;
-  margin-top: -50px;
-  background-color: #ffffff;
-`;
+// export const ContainerLoginWave = styled.div`
+//   width: 100%;
+//   margin-top: -50px;
+//   background-color: #ffffff;
+// `;
 
 export const ContainerLoginSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70%;
-  padding: 10px 35px 0px 35px;
+  height: 75%;
+  padding: 35px; // 35px 0px 35px;
   background-color: #ffffff;
 `;
 

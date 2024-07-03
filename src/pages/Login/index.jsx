@@ -13,7 +13,7 @@ import {
 } from "react-icons/io5";
 
 import logoPreta from "../../assets/logoPreta.svg";
-import wave from "../../assets/wave.svg";
+//import wave from "../../assets/wave.svg";
 
 import {
   ContainerLogin,
@@ -22,7 +22,7 @@ import {
   ContainerLoginSectionForm,
   ContainerLoginSectionHeader,
   ContainerLoginSectionSocial,
-  ContainerLoginWave,
+  //ContainerLoginWave,
 } from "./login.style";
 
 const Login = () => {
@@ -63,9 +63,9 @@ const Login = () => {
         <img src={logoPreta} alt="Logo" width="200" />
       </ContainerLoginHeader>
 
-      <ContainerLoginWave>
+      {/* <ContainerLoginWave>
         <img src={wave} alt="wave" />
-      </ContainerLoginWave>
+      </ContainerLoginWave> */}
 
       <ContainerLoginSection>
         <ContainerLoginSectionHeader>
@@ -74,7 +74,7 @@ const Login = () => {
             <span>Entre com as suas credenciais</span>
           </div>
           <div>
-            <IoLockClosedOutline size={30} />
+            <IoFingerPrint size={30} />
           </div>
         </ContainerLoginSectionHeader>
         <ContainerLoginSectionForm>
