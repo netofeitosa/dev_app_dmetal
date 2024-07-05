@@ -24,6 +24,7 @@ const Header = () => {
             <img
               src={auth.user?.image_url}
               width={34}
+              height={34}
               style={{ borderRadius: "50%" }}
             />
           )}

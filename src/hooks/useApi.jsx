@@ -30,6 +30,15 @@ export const useApi = () => ({
     return true;
   },
 
+  postImage: async (data) => {
+    try {
+      const response = await api.post("/userimage", data);
+      return response.data;
+    } catch (error) {
+      return error.response.data.error;
+    }
+  },
+
   getAprovacoes: async () => {
     try {
       const response = await api.get("/aprovacoes");

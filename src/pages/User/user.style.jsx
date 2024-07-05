@@ -21,8 +21,8 @@ export const ContainerUser = styled(motion.div)`
 export const ContainerUserData = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  gap: 20px;
+  margin-top: 5px;
+  gap: 10px;
   width: 100%;
 `;
 
