@@ -15,6 +15,23 @@ body {
   background-color: #f5f5f5;
 }
 
+@media (orientation: landscape) {
+    div {
+      display: none;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      text-align: center;
+      height: 100vh;
+    }
+    body::before {
+      content: "Por favor, para ter uma melhor experiência deixe o seu dispositivo na posição vertical!";
+    }
+  }
+
 .ant-table, 
 .ant-table-wrapper, 
 .ant-table-title, 
