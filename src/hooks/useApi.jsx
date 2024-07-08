@@ -119,4 +119,13 @@ export const useApi = () => ({
       return null;
     }
   },
+
+  getEstoqueGeral: async () => {
+    try {
+      const response = await api.get("/estoquelojas");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
 });

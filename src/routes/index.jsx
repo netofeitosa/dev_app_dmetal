@@ -17,6 +17,7 @@ import ReportsComercialRepresentantes from "../pages/ReportsComercialRepresentan
 import VendasVsCupom from "../pages/ReportsComercialLojas/VendasVsCupom";
 import VendasLojas from "../pages/ReportsComercialLojas/VendasLojas";
 import VendasGerais from "../pages/ReportsComercialLojas/VendasGerais";
+import EstoqueGeral from "../pages/ReportsComercialLojas/EstoqueGeral";
 import PageBase from "../pages/PageBase";
 import PageBaseBack from "../pages/PageBaseBack";
 
@@ -142,6 +143,14 @@ const AppRouter = () => {
             element={
               <RequireAuth>
                 <VendasGerais />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/estoquegeral"
+            element={
+              <RequireAuth>
+                <EstoqueGeral />
               </RequireAuth>
             }
           ></Route>
