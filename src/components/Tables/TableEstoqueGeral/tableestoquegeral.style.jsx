@@ -5,7 +5,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 5px;
+  padding: 5px 10px;
   gap: 10px;
 `;
 
@@ -28,48 +28,35 @@ export const Title = styled.div`
 export const ContainerObservacoes = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 15px;
+  padding: 10px;
+  margin: 0 0 8px 0;
   border: 1px solid #eeeeee;
   border-radius: 5px;
-  box-shadow: ${({ Theme }) => theme.color.boxShadow};
+  background-color: ${({ Theme }) => theme.color.background};
+`;
+
+export const ContainerObservacoesDescricao = styled.div`
+  text-align: center;
+  font-weight: bold;
 `;
 
 export const ContainerObservacoesDetalhes = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-
-  & div:nth-child(1) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  & div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    justify-content: flex-start;
-  }
-
-  & span:nth-child(1) {
-    font-weight: bold;
-  }
-`;
-
-export const ContainerObservacoesDescricao = styled.div`
-  display: flex;
   flex-direction: column;
+  align-items: center;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin: 0 3px;
+  background-color: #ffffff;
 
   & span:nth-child(1) {
+    font-size: 11px;
     font-weight: bold;
+    padding: 5px 0;
   }
-`;
 
-export const ContainerObservacoesActions = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 5px;
+  & span:nth-child(3) {
+    font-size: 9px;
+  }
 `;

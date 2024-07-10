@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import { Table } from "antd";
+import { Table, Col, Divider, Row } from "antd";
 
 import {
   ContainerObservacoes,
+  ContainerObservacoesDescricao,
   ContainerObservacoesDetalhes,
   Header,
   Title,
@@ -86,21 +87,48 @@ const TableEstoqueGeral = (props) => {
       )}
       expandable={{
         expandedRowRender: (record) => (
-          <ContainerObservacoes>
-            <ContainerObservacoesDetalhes>
-              <div>
-                {record.colecoes.map((colecao) => (
-                  <div key={colecao.key_colecao}>
-                    <span>{colecao.cod_colecao}</span>
-                    <span>Jeans: {formatarValor(colecao.jeans)}</span>
-                    <span>Malha: {formatarValor(colecao.malha)}</span>
-                    <span>Plano: {formatarValor(colecao.plano)}</span>
-                    <span>Total: {formatarValor(colecao.total)}</span>
-                  </div>
-                ))}
-              </div>
-            </ContainerObservacoesDetalhes>
-          </ContainerObservacoes>
+          <>
+            {record.colecoes.map((colecao) => (
+              <ContainerObservacoes>
+                <div key={colecao.key_colecao}>
+                  <ContainerObservacoesDescricao>
+                    <span>{colecao.colecao}</span>
+                  </ContainerObservacoesDescricao>
+
+                  <Row>
+                    <Col span={6}>
+                      <ContainerObservacoesDetalhes>
+                        <span>{formatarValor(colecao.jeans)}</span>
+                        <Divider />
+                        <span>Jeans</span>
+                      </ContainerObservacoesDetalhes>
+                    </Col>
+                    <Col span={6}>
+                      <ContainerObservacoesDetalhes>
+                        <span>{formatarValor(colecao.malha)}</span>
+                        <Divider />
+                        <span>Malha</span>
+                      </ContainerObservacoesDetalhes>
+                    </Col>
+                    <Col span={6}>
+                      <ContainerObservacoesDetalhes>
+                        <span>{formatarValor(colecao.plano)}</span>
+                        <Divider />
+                        <span>Plano</span>
+                      </ContainerObservacoesDetalhes>
+                    </Col>
+                    <Col span={6}>
+                      <ContainerObservacoesDetalhes>
+                        <span>{formatarValor(colecao.total)}</span>
+                        <Divider />
+                        <span>Total</span>
+                      </ContainerObservacoesDetalhes>
+                    </Col>
+                  </Row>
+                </div>
+              </ContainerObservacoes>
+            ))}
+          </>
         ),
       }}
       dataSource={dados}
