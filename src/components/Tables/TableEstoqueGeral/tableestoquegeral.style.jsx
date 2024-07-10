@@ -29,7 +29,7 @@ export const ContainerObservacoes = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin: 0 0 8px 0;
+  margin: 5px 0;
   border: 1px solid #eeeeee;
   border-radius: 5px;
   background-color: ${({ Theme }) => theme.color.background};
@@ -57,6 +57,6 @@ export const ContainerObservacoesDetalhes = styled.div`
   }
 
   & span:nth-child(3) {
-    font-size: 9px;
+    font-size: 10px;
   }
 `;
