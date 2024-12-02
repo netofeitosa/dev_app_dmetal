@@ -5,5 +5,5 @@ import { VitePWA } from "vite-plugin-pwa";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), VitePWA({ registerType: "autoUpdate" })],
-  base: "/",
+  base: "/dev_app_dmetal",
 });
