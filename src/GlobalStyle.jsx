@@ -21,16 +21,29 @@ body {
     }
     body {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 24px;
+      font-size: 14px;
       text-align: center;
       height: 100vh;
     }
     body::before {
-      content: "Por favor, para ter uma melhor experiência deixe o seu dispositivo na posição vertical!";
+      content: "";
+      display: block;
+      width: 150px;
+      height: 150px;
+      background-image: url('./src/assets/phone-256.png');
+      background-size: 96px;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-bottom: -10px;
     }
-  }
+
+    body::after {
+      content: "Para ter uma melhor experiência deixe o seu dispositivo na posição vertical!";
+    }
+}
 
 .ant-table, 
 .ant-table-wrapper, 
