@@ -27,6 +27,7 @@ const User = () => {
   const handleUpload = async ({ file }) => {
     const formData = new FormData();
     formData.append("image", file);
+    formData.append("userId", auth.user?.id);
     formData.append("login", auth.user?.login);
 
     messageApi.open({
@@ -63,7 +64,7 @@ const User = () => {
       transition={{ duration: 0.1 }}
     >
       {contextHolder}
-      {/* <ImgCrop>
+      <ImgCrop>
         <Upload customRequest={handleUpload} showUploadList={false}>
           <div>
             {!auth.user?.image_url ? (
@@ -73,14 +74,16 @@ const User = () => {
             )}
           </div>
         </Upload>
-      </ImgCrop> */}
-      <div>
+      </ImgCrop>
+
+      {/* <div>
         {!auth.user?.image_url ? (
           <Avatar size={75} icon={<TbUserEdit />} />
         ) : (
           <img src={auth.user?.image_url} alt="User Avatar" />
         )}
-      </div>
+      </div> */}
+
       <ContainerUserData>
         <ContainerUserDataForm>
           <span>Nome</span>
