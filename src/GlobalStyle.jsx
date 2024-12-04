@@ -33,7 +33,7 @@ body {
       display: block;
       width: 150px;
       height: 150px;
-      background-image: url('./src/assets/phone-256.png');
+      background-image: url('./src/assets/imagephonerotate.png');
       background-size: 96px;
       background-repeat: no-repeat;
       background-position: center;
