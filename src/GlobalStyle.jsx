@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
+import phoneRotateImage from "./assets/imagephonerotate.png";
+
 export const GlobalStyle = createGlobalStyle`
 
 * {
@@ -33,7 +35,7 @@ body {
       display: block;
       width: 150px;
       height: 150px;
-      background-image: url('./src/assets/imagephonerotate.png');
+      background-image: url(${phoneRotateImage});
       background-size: 96px;
       background-repeat: no-repeat;
       background-position: center;
