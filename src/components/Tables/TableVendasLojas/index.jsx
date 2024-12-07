@@ -19,6 +19,7 @@ const TableVendasLojas = (props) => {
   const dados = props.dados.lojas.map((loja) => ({
     ...loja,
     venda_dia_loja_format: formatarValor(loja.venda_dia_loja),
+    venda_dia_anterior_loja_format: formatarValor(loja.venda_dia_anterior_loja),
     venda_mes_loja_format: formatarValor(loja.venda_mes_loja),
     meta_format: formatarValor(loja.meta),
     meta_batida: parseFloat(loja.venda_mes_loja) >= parseFloat(loja.meta),
@@ -41,13 +42,19 @@ const TableVendasLojas = (props) => {
       sorter: (a, b) => a.venda_dia_loja - b.venda_dia_loja,
     },
     {
+      title: "D.Ant",
+      dataIndex: "venda_dia_anterior_loja_format",
+      key: "venda_dia_anterior_loja",
+      sorter: (a, b) => a.venda_dia_anterior_loja - b.venda_dia_anterior_loja,
+    },
+    {
       title: "Mês",
       dataIndex: "venda_mes_loja_format",
       key: "venda_mes_loja",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.venda_mes_loja - b.venda_mes_loja,
     },
-    {
+    /* {
       title: "Média",
       dataIndex: "media_mensal_venda_format",
       key: "media_mensal_venda",
@@ -62,7 +69,7 @@ const TableVendasLojas = (props) => {
           )}
         </MetaDiv>
       ),
-    },
+    }, */
     {
       title: "Meta",
       dataIndex: "meta_format",
@@ -89,7 +96,7 @@ const TableVendasLojas = (props) => {
         <Header>
           <Title>
             <span>Lojas</span>
-            <span>Detalhamento por loja mês atual</span>
+            <span>Detalhamento por loja</span>
           </Title>
         </Header>
       )}

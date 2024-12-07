@@ -18,33 +18,35 @@ body {
 }
 
 @media (orientation: landscape) {
-    div {
-      display: none;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 14px;
-      text-align: center;
-      height: 100vh;
-    }
-    body::before {
-      content: "";
-      display: block;
-      width: 150px;
-      height: 150px;
-      background-image: url(${phoneRotateImage});
-      background-size: 96px;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin-bottom: -10px;
-    }
+  body:not(.allow-landscape) div {
+    display: none;
+  }
 
-    body::after {
-      content: "Para ter uma melhor experiência deixe o seu dispositivo na posição vertical!";
-    }
+  body:not(.allow-landscape) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-align: center;
+    height: 100vh;
+  }
+
+  body:not(.allow-landscape)::before {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 150px;
+    background-image: url(${phoneRotateImage});
+    background-size: 96px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: -10px;
+  }
+
+  body:not(.allow-landscape)::after {
+    content: "Para ter uma melhor experiência, deixe o seu dispositivo na posição vertical!";
+  }
 }
 
 .ant-table, 
