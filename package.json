@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vercel/speed-insights": "^1.0.11",
     "antd": "^5.17.4",
     "antd-img-crop": "^4.22.0",
     "apexcharts": "^3.49.1",
