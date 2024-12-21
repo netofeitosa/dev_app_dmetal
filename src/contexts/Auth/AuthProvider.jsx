@@ -17,10 +17,10 @@ export const AuthProvider = ({ children }) => {
         if (data) {
           setUser(data);
         } else {
-          message.error({
-            content: "Token expirado!",
-            duration: 2,
-          });
+          // message.error({
+          //   content: "Token expirado!",
+          //   duration: 2,
+          // });
           signout();
         }
       } else {

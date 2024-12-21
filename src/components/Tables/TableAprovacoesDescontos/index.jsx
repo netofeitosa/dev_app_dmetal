@@ -103,6 +103,13 @@ const TableAprovacoesDescontos = (props) => {
             </Divider>
             <ContainerObservacoesDetalhes>
               <div>
+                <span>Cliente</span>
+                <span>{record.cliente}</span>
+              </div>
+            </ContainerObservacoesDetalhes>
+            <Divider orientation="center"></Divider>
+            <ContainerObservacoesDetalhes>
+              <div>
                 <span>Nome Fantasia</span>
                 <span>{record.nome_fantasia}</span>
               </div>

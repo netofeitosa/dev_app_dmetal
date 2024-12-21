@@ -1,7 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./routes";
 import { AuthProvider } from "./contexts/Auth/AuthProvider";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
           <AppRouter />
         </BrowserRouter>
       </AuthProvider>
-      <SpeedInsights />
     </>
   );
 }

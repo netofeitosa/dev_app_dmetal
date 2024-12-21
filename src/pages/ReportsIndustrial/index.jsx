@@ -1,6 +1,7 @@
 import React, { useContext, useLayoutEffect } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import { Divider } from "antd";
 
 import {
   HiMiniChevronRight,
@@ -13,6 +14,7 @@ import {
   Section,
   SectionCol1,
   SectionCol2,
+  SectionDivider,
   SectionLine,
 } from "./reportsindustrial.style";
 
@@ -44,6 +46,25 @@ const ReportsIndustrial = () => {
               <HiMiniChevronRight
                 size={24}
                 //onClick={() => [Navigate("/controlefaccoes")]}
+              />
+            ) : (
+              <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />
+            )}
+          </SectionCol2>
+        </SectionLine>
+        <SectionDivider>
+          <Divider />
+        </SectionDivider>
+        <SectionLine>
+          <SectionCol1>
+            <HiOutlinePresentationChartBar size={25} />
+            <span>Análise de Referências</span>
+          </SectionCol1>
+          <SectionCol2>
+            {roles.includes("analisereferencias") || roles.includes("admin") ? (
+              <HiMiniChevronRight
+                size={24}
+                onClick={() => [Navigate("/analisereferencias")]}
               />
             ) : (
               <HiOutlineLockClosed size={20} style={{ strokeWidth: 2 }} />

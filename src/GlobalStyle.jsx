@@ -10,6 +10,10 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%; /* Desativa o ajuste automático */
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 15px;
@@ -76,6 +80,18 @@ body {
   justify-content: center;
   background-color: #ffffff;
   border-bottom: 1px solid #eeeeee;
+}
+
+.ant-image-preview-root {
+  z-index: 1050 !important; /* Certifique-se de que está acima do header */
+}
+
+.ant-image-preview {
+  position: fixed !important; /* Garante que cobre tudo, incluindo headers fixados */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 `;

@@ -102,6 +102,15 @@ export const useApi = () => ({
     }
   },
 
+  getVendasLojasCustom: async () => {
+    try {
+      const response = await api.get("/vendaslojascustom");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+
   getVendasCupons: async () => {
     try {
       const response = await api.get("/vendascupons");
@@ -123,6 +132,38 @@ export const useApi = () => ({
   getEstoqueGeral: async () => {
     try {
       const response = await api.get("/estoquelojas");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+  postAnalisereferencias: async (data) => {
+    try {
+      const response = await api.post("/analisereferencias", data);
+      return response.data;
+    } catch (error) {
+      return error.response?.data?.error;
+    }
+  },
+  getReferenciasColecoes: async () => {
+    try {
+      const response = await api.get("/analisereferenciasfiltrocolecoes");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+  getReferenciasMix: async () => {
+    try {
+      const response = await api.get("/analisereferenciasfiltromix");
+      return response.data;
+    } catch (error) {
+      return null;
+    }
+  },
+  getReferenciasGrupos: async () => {
+    try {
+      const response = await api.get("/analisereferenciasfiltrogrupos");
       return response.data;
     } catch (error) {
       return null;

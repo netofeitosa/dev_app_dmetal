@@ -1,4 +1,5 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState, useContext } from "react";
+import { AuthContext } from "../../../contexts/Auth/AuthContext";
 import { useOutletContext } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
 import { useApi } from "../../../hooks/useApi";
@@ -22,6 +23,7 @@ import { Col, Divider, FloatButton, Row } from "antd";
 import { HiMiniChevronDown, HiMiniChevronUp } from "react-icons/hi2";
 
 const VendasLojas = () => {
+  const auth = useContext(AuthContext);
   const [dados, setDados] = useState();
   const [removeLoading, setRemoveLoading] = useState(false);
   const { setPageTitle } = useOutletContext();
@@ -33,12 +35,22 @@ const VendasLojas = () => {
 
   useEffect(() => {
     const getDados = async () => {
-      try {
-        const [response] = await api.getVendasLojas();
-        setDados(response);
-        setRemoveLoading(true);
-      } catch (error) {
-        console.log(error.response.data.message);
+      if (auth.user.id === 11) {
+        try {
+          const [response] = await api.getVendasLojasCustom();
+          setDados(response);
+          setRemoveLoading(true);
+        } catch (error) {
+          console.log(error.response.data.message);
+        }
+      } else {
+        try {
+          const [response] = await api.getVendasLojas();
+          setDados(response);
+          setRemoveLoading(true);
+        } catch (error) {
+          console.log(error.response.data.message);
+        }
       }
     };
     getDados();

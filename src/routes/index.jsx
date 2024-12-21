@@ -18,6 +18,8 @@ import VendasVsCupom from "../pages/ReportsComercialLojas/VendasVsCupom";
 import VendasLojas from "../pages/ReportsComercialLojas/VendasLojas";
 import VendasGerais from "../pages/ReportsComercialLojas/VendasGerais";
 import EstoqueGeral from "../pages/ReportsComercialLojas/EstoqueGeral";
+import AnaliseReferencias from "../pages/ReportsIndustrial/AnaliseReferencias";
+import AnaliseReferenciasResult from "../pages/ReportsIndustrial/AnaliseReferencias/AnaliseReferenciasResult";
 import PageBase from "../pages/PageBase";
 import PageBaseBack from "../pages/PageBaseBack";
 
@@ -28,7 +30,7 @@ const AppRouter = () => {
 
   useEffect(() => {
     const body = document.body;
-    if (location.pathname === "/vendasgerais") {
+    if (location.pathname === "/analisereferenciasresult") {
       body.classList.add("allow-landscape");
     } else {
       body.classList.remove("allow-landscape");
@@ -160,6 +162,22 @@ const AppRouter = () => {
             element={
               <RequireAuth>
                 <EstoqueGeral />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/analisereferencias"
+            element={
+              <RequireAuth>
+                <AnaliseReferencias />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/analisereferenciasresult"
+            element={
+              <RequireAuth>
+                <AnaliseReferenciasResult />
               </RequireAuth>
             }
           ></Route>

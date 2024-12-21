@@ -12,7 +12,7 @@ const HeaderBack = (props) => {
         <HiOutlineChevronLeft
           style={{ strokeWidth: 2.3 }}
           size={22}
-          onClick={() => navigate(-1) || navigate("/")}
+          onClick={() => navigate(-1)}
         />
         <span>{props.description}</span>
         <HiOutlineHome

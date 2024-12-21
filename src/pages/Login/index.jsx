@@ -41,7 +41,7 @@ const Login = () => {
     }
   }, [auth.user, auth.isLoading, navigate]);
 
-  async function onFinish(user, password) {
+  async function handleLogin(user, password) {
     setButton(true);
     const response = await auth.signin(user, password);
     if (!response) {
@@ -78,7 +78,11 @@ const Login = () => {
           </div>
         </ContainerLoginSectionHeader>
         <ContainerLoginSectionForm>
-          <Form name="normal_login" className="login-form" onFinish={onFinish}>
+          <Form
+            name="normal_login"
+            className="login-form"
+            onFinish={handleLogin}
+          >
             <Form.Item
               name="user"
               rules={[{ required: true, message: "Informe o seu usuário" }]}
