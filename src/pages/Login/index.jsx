@@ -21,6 +21,7 @@ import {
   ContainerLoginSectionForm,
   ContainerLoginSectionHeader,
   ContainerLoginSectionSocial,
+  //ContainerLoginWave,
 } from "./login.style";
 
 const Login = () => {
@@ -42,7 +43,11 @@ const Login = () => {
   async function handleLogin(user, password) {
     setButton(true);
     const response = await auth.signin(user, password);
-    if (!response) {
+    if (response.code === "ERR_NETWORK") {
+      setButton(false);
+      message.error("Erro! Tente novamente mais tarde.");
+    }
+    if (response.code === "ERR_BAD_REQUEST" && response.status === 401) {
       setButton(false);
       message.error("Usuário ou senha inválidos!");
     }

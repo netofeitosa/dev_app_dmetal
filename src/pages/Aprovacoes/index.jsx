@@ -30,7 +30,8 @@ const Aprovacoes = () => {
   const Navigate = useNavigate();
   const api = useApi();
   const auth = useContext(AuthContext);
-  const roles = auth.user ? auth.user.roles : [];
+  const rolesArray = auth.user ? auth.user.roles : [];
+  const roles = rolesArray?.map((role) => role.name) || [];
 
   useEffect(() => {
     const getAprovacoes = async () => {

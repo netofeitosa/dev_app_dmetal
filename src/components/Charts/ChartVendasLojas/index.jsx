@@ -1,6 +1,6 @@
-import { color } from "framer-motion";
-import React from "react";
-import Chart from "react-apexcharts";
+import React, { Suspense } from "react";
+
+const Chart = React.lazy(() => import("react-apexcharts"));
 
 const ChartVendasLojas = (props) => {
   const dados = props.dados;
@@ -60,7 +60,7 @@ const ChartVendasLojas = (props) => {
       type: "string",
       labels: {
         style: {
-          fontSize: "12px",
+          fontSize: "11px",
         },
       },
     },
@@ -128,8 +128,8 @@ const ChartVendasLojas = (props) => {
         vendaMesAnterior,
       ],
     },
-    {
-      name: "Média Anual",
+    /* {
+      name: "Média",
       type: "line",
       data: [
         mediaMensalVarejo,
@@ -137,13 +137,15 @@ const ChartVendasLojas = (props) => {
         mediaMensalEcommerce,
         mediaMensal,
       ],
-    },
+    }, */
   ];
 
   return (
     <>
       <div style={{ width: "100%" }}>
-        <Chart options={options} series={series} type="line" height={350} />
+        <Suspense fallback={<div>Loading chart...</div>}>
+          <Chart options={options} series={series} type="line" height={350} />
+        </Suspense>
       </div>
     </>
   );

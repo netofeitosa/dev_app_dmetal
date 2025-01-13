@@ -8,7 +8,7 @@ export const ContainerAprovacoes = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  width: 85%;
+  width: 90%;
   gap: 20px;
 `;
 

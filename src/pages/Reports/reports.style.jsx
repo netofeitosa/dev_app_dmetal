@@ -8,7 +8,7 @@ export const Container = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  width: 85%;
+  width: 90%;
   gap: 20px;
 `;
 
@@ -21,6 +21,18 @@ export const Title = styled.div`
 
   & span {
     font-size: 26px;
+    font-weight: 800;
+  }
+`;
+
+export const Construction = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  color: gray;
+  & span {
+    font-size: 20px;
     font-weight: 800;
   }
 `;

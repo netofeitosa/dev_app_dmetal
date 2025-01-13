@@ -15,7 +15,15 @@ export const AuthProvider = ({ children }) => {
       if (authToken && validateToken) {
         const data = await api.validadeToken(authToken, validateToken);
         if (data) {
-          setUser(data);
+          const imageBlob = await api.getImage(data.token);
+          if (imageBlob.size > 0) {
+            const profileImageUrl = imageBlob
+              ? URL.createObjectURL(imageBlob)
+              : null;
+            setUser({ ...data, profileImage: profileImageUrl });
+          } else {
+            setUser({ ...data, profileImage: null });
+          }
         } else {
           message.error({
             content: "Sessão expirada! Logue novamente.",
@@ -32,14 +40,27 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const signin = async ({ user, password }) => {
-    const data = await api.signin(user, password);
-    if (data) {
-      setUser(data);
-      const expirationMs = 3600000; // 1 hora
-      setToken(data.token, expirationMs);
-      return true;
+    try {
+      const data = await api.signin(user, password);
+      if (data) {
+        const expirationMs = 3600000;
+        setToken(data.token, expirationMs);
+
+        const imageBlob = await api.getImage(data.token);
+        if (imageBlob.size > 0) {
+          const profileImageUrl = imageBlob
+            ? URL.createObjectURL(imageBlob)
+            : null;
+          setUser({ ...data, profileImage: profileImageUrl });
+        } else {
+          setUser({ ...data, profileImage: null });
+        }
+        return true;
+      }
+      return false;
+    } catch (error) {
+      return error;
     }
-    return false;
   };
 
   const signout = async () => {
@@ -50,7 +71,6 @@ export const AuthProvider = ({ children }) => {
   const setToken = (token, expirationMs) => {
     const now = new Date().getTime();
     const validateToken = now + expirationMs;
-
     localStorage.setItem("authToken", token);
     localStorage.setItem("validateToken", validateToken);
   };

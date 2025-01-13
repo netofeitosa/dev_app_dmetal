@@ -1,20 +1,37 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import { visualizer } from "rollup-plugin-visualizer";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    visualizer({ open: true }),
     VitePWA({
       registerType: "autoUpdate",
       workbox: {
-        clientsClaim: true, // Toma controle imediatamente após a instalação
-        skipWaiting: true, // Substitui o Service Worker antigo
+        //maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        clientsClaim: true,
+        skipWaiting: true,
+        runtimeCaching: [
+          {
+            urlPattern:
+              /\.(?:js|css|html|png|jpg|jpeg|svg|gif|woff|woff2|eot|ttf|otf)$/,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "static-assets",
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 dias
+              },
+            },
+          },
+        ],
       },
       manifest: {
         name: "Dmetal",
         short_name: "Dmetal",
+        description: "App Dmetal",
         start_url: "/",
         scope: "/",
         display: "standalone",
@@ -37,4 +54,20 @@ export default defineConfig({
     }),
   ],
   base: "/",
+  build: {
+    chunkSizeWarningLimit: 5000, // Aumenta o limite de aviso para 2000 kB
+    minify: "terser", // Garante minificação
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.logs para reduzir o tamanho
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+        },
+      },
+    },
+  },
 });

@@ -9,7 +9,7 @@ export const ContainerUser = styled(motion.div)`
   align-items: center;
   justify-content: flex-start;
   gap: 15px;
-  width: 85%;
+  width: 90%;
 
   & img {
     width: 120px;
@@ -24,6 +24,12 @@ export const ContainerUserData = styled.div`
   margin-top: 5px;
   gap: 10px;
   width: 100%;
+`;
+
+export const Gear = styled.div`
+  margin-left: auto; /* Empurra o ícone para a direita */
+  margin-right: 10px;
+  margin-bottom: -5px;
 `;
 
 export const ContainerUserDataForm = styled.div`

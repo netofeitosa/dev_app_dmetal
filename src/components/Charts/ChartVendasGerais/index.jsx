@@ -1,17 +1,18 @@
-import React from "react";
-import Chart from "react-apexcharts";
+import React, { Suspense } from "react";
+//import Chart from "react-apexcharts";
+
+const Chart = React.lazy(() => import("react-apexcharts"));
 
 const ChartVendasGerais = (props) => {
   const dados = props.dados;
-
-  const total_venda_2021 = dados.total_venda_2021;
-  const total_venda_2021_mes = dados.total_venda_2021_mes;
   const total_venda_2022 = dados.total_venda_2022;
   const total_venda_2022_mes = dados.total_venda_2022_mes;
   const total_venda_2023 = dados.total_venda_2023;
   const total_venda_2023_mes = dados.total_venda_2023_mes;
   const total_venda_2024 = dados.total_venda_2024;
   const total_venda_2024_mes = dados.total_venda_2024_mes;
+  const total_venda_2025 = dados.total_venda_2025;
+  const total_venda_2025_mes = dados.total_venda_2025_mes;
 
   const options = {
     chart: {
@@ -48,7 +49,7 @@ const ChartVendasGerais = (props) => {
         }
       },
     },
-    labels: ["2021", "2022", "2023", "2024"],
+    labels: ["2022", "2023", "2024", "2025"],
     xaxis: {
       type: "string",
       labels: {
@@ -129,20 +130,20 @@ const ChartVendasGerais = (props) => {
       name: "Ano",
       type: "column",
       data: [
-        total_venda_2021,
         total_venda_2022,
         total_venda_2023,
         total_venda_2024,
+        total_venda_2025,
       ],
     },
     {
       name: "Mês Atual",
       type: "column",
       data: [
-        total_venda_2021_mes,
         total_venda_2022_mes,
         total_venda_2023_mes,
         total_venda_2024_mes,
+        total_venda_2025_mes,
       ],
     },
   ];
@@ -150,7 +151,9 @@ const ChartVendasGerais = (props) => {
   return (
     <>
       <div style={{ width: "100%" }}>
-        <Chart options={options} series={series} type="line" height={350} />
+        <Suspense fallback={<div>Loading chart...</div>}>
+          <Chart options={options} series={series} type="line" height={350} />
+        </Suspense>
       </div>
     </>
   );

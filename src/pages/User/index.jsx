@@ -1,21 +1,26 @@
 import React, { useContext, useLayoutEffect } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
-import { Avatar, Upload, message } from "antd";
 import ImgCrop from "antd-img-crop";
 import { TbUserEdit } from "react-icons/tb";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";
+import { Avatar, message, Upload } from "antd";
+
+import { GoGear } from "react-icons/go";
 
 import {
   ContainerUser,
   ContainerUserData,
   ContainerUserDataForm,
+  Gear,
 } from "./user.style";
 
 const User = () => {
   const auth = useContext(AuthContext);
   const { setPageTitle } = useOutletContext();
   const api = useApi();
+  const Navigate = useNavigate();
+  const roles = auth.user ? auth.user.roles : [];
 
   const [messageApi, contextHolder] = message.useMessage();
   const key = "updatable";
@@ -45,7 +50,7 @@ const User = () => {
         content: response.message,
         duration: 2,
       });
-      auth.setUser({ ...auth.user, image_url: URL.createObjectURL(file) });
+      auth.setUser({ ...auth.user, profileImage: URL.createObjectURL(file) });
     } else {
       messageApi.open({
         key,
@@ -67,24 +72,43 @@ const User = () => {
       <ImgCrop>
         <Upload customRequest={handleUpload} showUploadList={false}>
           <div>
-            {!auth.user?.image_url ? (
-              <Avatar size={75} icon={<TbUserEdit />} />
+            {!auth.user?.profileImage ? (
+              <Avatar size={125} icon={<TbUserEdit />} />
             ) : (
-              <img src={auth.user?.image_url} alt="User Avatar" />
+              <img
+                src={auth.user?.profileImage}
+                width={125}
+                //height={75}
+                style={{
+                  borderRadius: "50%",
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                }}
+                alt="User Avatar"
+              />
             )}
           </div>
         </Upload>
       </ImgCrop>
 
-      {/* <div>
-        {!auth.user?.image_url ? (
-          <Avatar size={75} icon={<TbUserEdit />} />
-        ) : (
-          <img src={auth.user?.image_url} alt="User Avatar" />
-        )}
-      </div> */}
-
       <ContainerUserData>
+        {/* {roles.includes("admin") && (
+          <Gear>
+            <GoGear
+              size={20}
+              style={{ strokeWidth: 0.5 }}
+              onClick={() => [Navigate("/config")]}
+            />
+          </Gear>
+        )} */}
+        {auth.user.id === 2 && (
+          <Gear>
+            <GoGear
+              size={20}
+              style={{ strokeWidth: 0.5 }}
+              onClick={() => [Navigate("/config")]}
+            />
+          </Gear>
+        )}
         <ContainerUserDataForm>
           <span>Nome</span>
           <span>{auth.user?.nome}</span>

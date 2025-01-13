@@ -1,5 +1,6 @@
-import React from "react";
-import Chart from "react-apexcharts";
+import React, { Suspense } from "react";
+
+const Chart = React.lazy(() => import("react-apexcharts"));
 
 const ChartVendasVsCupom = (props) => {
   const dados = props.dados;
@@ -72,7 +73,9 @@ const ChartVendasVsCupom = (props) => {
   return (
     <>
       <div style={{ width: "100%" }}>
-        <Chart options={options} series={series} type="bar" height={300} />
+        <Suspense fallback={<div>Loading chart...</div>}>
+          <Chart options={options} series={series} type="bar" height={300} />
+        </Suspense>
       </div>
 
       {/* <div>

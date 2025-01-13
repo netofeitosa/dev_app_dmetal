@@ -20,6 +20,7 @@ import {
 
 const Reports = () => {
   const Navigate = useNavigate();
+
   return (
     <Container
       initial={{ opacity: 0, x: 200 }}
@@ -41,7 +42,7 @@ const Reports = () => {
           <SectionCol2>
             <HiMiniChevronRight
               size={24}
-              onClick={() => [Navigate("/comercial")]}
+              onClick={() => [Navigate("/reportscomercial")]}
             />
           </SectionCol2>
         </SectionLine>
@@ -56,7 +57,7 @@ const Reports = () => {
           <SectionCol2>
             <HiMiniChevronRight
               size={24}
-              onClick={() => [Navigate("/industrial")]}
+              //onClick={() => [Navigate("/dashindustrial")]}
             />
           </SectionCol2>
         </SectionLine>

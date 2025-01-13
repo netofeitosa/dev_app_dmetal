@@ -3,15 +3,22 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { Col, Row } from "antd";
 
-import { ContainerFooter, ContainerFooterLink } from "./footer.style";
+import {
+  ContainerFooter,
+  ContainerFooterLink,
+  LinkAtivo,
+  LinkInativo,
+} from "./footer.style";
 
 import {
-  HiHandThumbUp,
-  HiOutlineHandThumbUp,
-  HiOutlineArrowRightOnRectangle,
-  HiOutlineChartBarSquare,
-  HiChartBarSquare,
-} from "react-icons/hi2";
+  HiThumbUp,
+  HiOutlineThumbUp,
+  HiDocumentText,
+  HiOutlineDocumentText,
+  HiChartPie,
+  HiOutlineChartPie,
+  HiOutlineLogout,
+} from "react-icons/hi";
 
 const Footer = () => {
   const [paginaAtiva, setPaginaAtiva] = useState("");
@@ -32,53 +39,84 @@ const Footer = () => {
   return (
     <ContainerFooter>
       <Row>
-        <Col span={8}>
+        <Col span={6}>
           <Link to={"/aprovacoes"}>
             <ContainerFooterLink>
               {paginaAtiva === "aprovacoes" ? (
-                <div style={{ color: "#582183" }}>
-                  <HiHandThumbUp size={30} />
-                  <span>Aprovações</span>
-                </div>
+                <LinkAtivo
+                  initial={{ width: "0%" }}
+                  animate={{ width: "70%" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div>
+                    <HiThumbUp size={30} />
+                    <span>Aprovações</span>
+                  </div>
+                </LinkAtivo>
               ) : (
-                <div>
-                  <HiOutlineHandThumbUp
-                    size={30}
-                    style={{ strokeWidth: 1.3 }}
-                  />
+                <LinkInativo>
+                  <HiOutlineThumbUp size={30} style={{ strokeWidth: 1.3 }} />
                   <span>Aprovações</span>
-                </div>
+                </LinkInativo>
               )}
             </ContainerFooterLink>
           </Link>
         </Col>
-        <Col span={8}>
-          <Link to={"/relatorios"}>
+        <Col span={6}>
+          <Link to={"/dashboards"}>
             <ContainerFooterLink>
-              {paginaAtiva === "relatorios" ? (
-                <div style={{ color: "#582183" }}>
-                  <HiChartBarSquare size={30} />
-                  <span>Relatórios</span>
-                </div>
+              {paginaAtiva === "dashboards" ? (
+                <LinkAtivo
+                  initial={{ width: "0%" }}
+                  animate={{ width: "70%" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div>
+                    <HiChartPie size={30} />
+                    <span>Dashboards</span>
+                  </div>
+                </LinkAtivo>
               ) : (
-                <div>
-                  <HiOutlineChartBarSquare
-                    size={30}
-                    style={{ strokeWidth: 1.3 }}
-                  />
-                  <span>Relatórios</span>
-                </div>
+                <LinkInativo>
+                  <HiOutlineChartPie size={30} style={{ strokeWidth: 1.3 }} />
+                  <span>Dashboards</span>
+                </LinkInativo>
               )}
             </ContainerFooterLink>
           </Link>
         </Col>
-        <Col span={8}>
+        <Col span={6}>
+          <Link to={"/reports"}>
+            <ContainerFooterLink>
+              {paginaAtiva === "reports" ? (
+                <LinkAtivo
+                  initial={{ width: "0%" }}
+                  animate={{ width: "70%" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div>
+                    <HiDocumentText size={30} />
+                    <span>Relatórios</span>
+                  </div>
+                </LinkAtivo>
+              ) : (
+                <LinkInativo>
+                  <HiOutlineDocumentText
+                    size={30}
+                    style={{ strokeWidth: 1.3 }}
+                  />
+                  <span>Relatórios</span>
+                </LinkInativo>
+              )}
+            </ContainerFooterLink>
+          </Link>
+        </Col>
+        <Col span={6}>
           <ContainerFooterLink onClick={handleLogout}>
-            <HiOutlineArrowRightOnRectangle
-              size={30}
-              style={{ strokeWidth: 1.3 }}
-            />
-            <span>Sair</span>
+            <LinkInativo>
+              <HiOutlineLogout size={30} style={{ strokeWidth: 1.3 }} />
+              <span>Sair</span>
+            </LinkInativo>
           </ContainerFooterLink>
         </Col>
       </Row>
