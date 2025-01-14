@@ -22,6 +22,7 @@ const ComparativoVendas = () => {
   const [lojas, setLojas] = useState();
   const [button, setButton] = useState(false);
   const [removeLoading, setRemoveLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { setPageTitle } = useOutletContext();
   const api = useApi();
 
@@ -33,20 +34,44 @@ const ComparativoVendas = () => {
     const getDados = async () => {
       try {
         const empresas = await api.getLojasAtivas();
+
         setLojas(empresas);
+
+        await loadModules();
+
         setRemoveLoading(true);
       } catch (error) {
         console.log(error.response.data.message);
       }
     };
+
+    const loadModules = async () => {
+      try {
+        const momentModule = await import("moment");
+        const pdfMakeModule = await import("pdfmake/build/pdfmake");
+        const vfsFontsModule = await import("pdfmake/build/vfs_fonts");
+
+        // Adiciona as bibliotecas carregadas à janela global
+        window.moment = momentModule.default;
+        window.pdfMake = pdfMakeModule.default;
+        window.vfsFonts = vfsFontsModule.default;
+
+        // Marcar os módulos como carregados
+        setIsLoaded(true);
+      } catch (error) {
+        console.error("Erro ao carregar os módulos:", error);
+      }
+    };
+
     getDados();
   }, []);
 
   async function onFinish(values) {
+    // Previne múltiplos cliques
     setButton(true);
 
+    // Captura os dados necessários do formulário
     const { lojas } = values;
-
     const responseData = {
       lojas: lojas || [],
       dataIni1: values.dataIni1.format("YYYY-MM-DD"),
@@ -58,13 +83,29 @@ const ComparativoVendas = () => {
     };
 
     try {
+      // Faz a requisição para obter os dados de vendas
       const response = await api.postVendasLojasPeriodo(responseData);
-      await GeneratePDFComparativoVendas(response, responseData);
-      setButton(false);
+
+      // Gera o PDF com a resposta obtida
+      if (isLoaded) {
+        // Só gera o PDF se os módulos estiverem carregados
+        const url = await GeneratePDFComparativoVendas(response, responseData);
+
+        // Atualiza o estado do botão e a URL do PDF
+        setButton(false);
+
+        // Verifica se a URL foi gerada e abre a nova aba
+        if (url) {
+          window.open(url, "_blank");
+        }
+      } else {
+        console.log("Os módulos ainda não foram carregados.");
+      }
     } catch (error) {
       console.log(error);
+      setButton(false); // Em caso de erro, libera o botão
     } finally {
-      setButton(false);
+      setButton(false); // Finaliza o processo
     }
   }
 
