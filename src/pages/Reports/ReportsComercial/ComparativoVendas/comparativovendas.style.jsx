@@ -74,6 +74,10 @@ export const ResumeForm = styled.div`
   .ant-piker .ant-piker-ranger {
     width: 100% !important;
   }
+
+  .ant-picker-input > input::placeholder {
+    font-size: 11px;
+  }
 `;
 
 export const ResumeCardTitle = styled.div`

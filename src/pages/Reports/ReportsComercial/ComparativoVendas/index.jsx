@@ -129,6 +129,7 @@ const ComparativoVendas = () => {
                     style={{ width: "100%" }}
                   >
                     <DatePicker
+                      className="custom-datepicker"
                       inputReadOnly
                       allowClear={false}
                       picker="date"

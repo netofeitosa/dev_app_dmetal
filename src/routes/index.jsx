@@ -74,6 +74,12 @@ const ComparativoVendas = lazy(() =>
   import("../pages/Reports/ReportsComercial/ComparativoVendas")
 );
 
+const ComparativoVendasResult = lazy(() =>
+  import(
+    "../pages/Reports/ReportsComercial/ComparativoVendas/ComparativoVendasResult"
+  )
+);
+
 const PageBase = lazy(() => import("../pages/PageBase"));
 const PageBaseBack = lazy(() => import("../pages/PageBaseBack"));
 
@@ -281,6 +287,14 @@ const AppRouter = () => {
               element={
                 <RequireAuth>
                   <ComparativoVendas />
+                </RequireAuth>
+              }
+            ></Route>
+            <Route
+              path="/comparativovendasresult"
+              element={
+                <RequireAuth>
+                  <ComparativoVendasResult />
                 </RequireAuth>
               }
             ></Route>

@@ -256,6 +256,12 @@ const GeneratePDFComparativoVendas = async (response, responseData) => {
               ],
 
               ...response.lojas.map((item) => {
+                const percFillColor =
+                  item.perc > 0
+                    ? "#d4edda"
+                    : item.perc < 0
+                    ? "#f8d7da"
+                    : "#ffffff";
                 const percFillColor1 =
                   item.perc1 > 0
                     ? "#d4edda"
@@ -267,7 +273,7 @@ const GeneratePDFComparativoVendas = async (response, responseData) => {
                   { text: item.valor_liquido1_format, fontSize: 8 },
                   {
                     text: item.perc_format,
-                    fillColor: percFillColor1,
+                    fillColor: percFillColor,
                     alignment: "center",
                     fontSize: 8,
                   },
