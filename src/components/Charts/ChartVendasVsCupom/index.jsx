@@ -17,6 +17,7 @@ const ChartVendasVsCupom = (props) => {
       toolbar: {
         show: false, // Desativa a toolbar
       },
+      fontFamily: "Outfit, sans-serif",
     },
     plotOptions: {
       bar: {
@@ -37,9 +38,9 @@ const ChartVendasVsCupom = (props) => {
       categories: ["Mês Atual", "Mês Anterior"],
     },
     yaxis: {
-      title: {
-        text: "Total Venda",
-      },
+      // title: {
+      //   text: "Total Venda",
+      // },
       labels: {
         formatter: function (value) {
           if (value >= 1000000000) {

@@ -25,18 +25,19 @@ const ChartVendasLojas = (props) => {
       height: 350,
       type: "line",
       toolbar: {
-        show: true,
+        show: false,
       },
       zoom: {
         enabled: false,
       },
+      fontFamily: "Outfit, sans-serif",
     },
     stroke: {
       width: [0, 0, 3],
     },
-    title: {
-      text: "Gráfico de Vendas",
-    },
+    // title: {
+    //   text: "Gráfico de Vendas",
+    // },
     dataLabels: {
       enabled: true,
       enabledOnSeries: [2],

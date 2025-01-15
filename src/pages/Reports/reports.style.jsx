@@ -20,7 +20,7 @@ export const Title = styled.div`
   margin-left: 5px;
 
   & span {
-    font-size: 26px;
+    font-size: 25px;
     font-weight: 800;
   }
 `;

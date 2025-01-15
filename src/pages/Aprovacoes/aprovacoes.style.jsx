@@ -20,7 +20,7 @@ export const ContainerAprovacoesTitle = styled.div`
   margin-left: 5px;
 
   & span:nth-child(1) {
-    font-size: 26px;
+    font-size: 25px;
     font-weight: 800;
   }
 `;

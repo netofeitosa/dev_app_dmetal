@@ -60,12 +60,12 @@ export const ResumeCol1 = styled.div`
   & div:nth-child(1) {
     width: 100%;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 800;
     align-items: center;
   }
 
   & span:nth-child(1) {
-    font-weight: bold;
+    font-weight: 600;
   }
 
   & div:nth-child(5) {
@@ -96,12 +96,12 @@ export const ResumeCol2 = styled.div`
   & div:nth-child(1) {
     width: 100%;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 800;
     align-items: center;
   }
 
   & span:nth-child(1) {
-    font-weight: bold;
+    font-weight: 600;
   }
 
   & div:nth-child(5) {

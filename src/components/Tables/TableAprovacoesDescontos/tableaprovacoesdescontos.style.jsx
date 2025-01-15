@@ -32,7 +32,7 @@ export const ContainerObservacoes = styled.div`
   padding: 15px;
   border: 1px solid #eeeeee;
   border-radius: 5px;
-  box-shadow: ${({ Theme }) => theme.color.boxShadow};
+  box-shadow: ${({ Theme }) => theme.color.boxShadowCard};
 `;
 
 export const ContainerObservacoesDetalhes = styled.div`

@@ -74,10 +74,11 @@ export const ResumeCardItensCol = styled.div`
   border-radius: 8px;
   margin: 0px 5px;
   padding: 8px 10px;
+  font-family: "Outfit", serif !important;
 
   & span:nth-child(1) {
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 700;
   }
 
   & span:nth-child(4) {
@@ -88,6 +89,7 @@ export const ResumeCardItensCol = styled.div`
 export const ResumeCardItensPM = styled.div`
   font-size: 14px;
   font-weight: bold;
+  font-family: "Outfit", serif !important;
 `;
 
 export const ResumeCardItensInd = styled.span`

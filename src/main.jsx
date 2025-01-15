@@ -18,13 +18,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           Button: {
             colorPrimary: "#582183",
             algorithm: true,
-            fontFamily: "Roboto",
+            //fontFamily: "Roboto",
+            fontFamily: "Outfit",
             fontSize: 12,
           },
           Input: {
             colorPrimary: "#dddbff",
             algorithm: true,
-            fontFamily: "Roboto",
+            //fontFamily: "Roboto",
+            fontFamily: "Outfit",
           },
           Spin: {
             colorPrimary: "#582183",
@@ -33,14 +35,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           Table: {
             colorPrimary: "#582183",
             algorithm: true,
-            fontFamily: "Roboto",
+            //fontFamily: "Roboto",
+            fontFamily: "Outfit",
             fontSize: 11,
           },
           Pagination: {
             colorPrimary: "#582183",
             algorithm: true,
             fontSize: 11,
-            fontFamily: "Roboto",
+            //fontFamily: "Roboto",
+            fontFamily: "Outfit",
           },
           Divider: {
             margin: 0,
@@ -48,10 +52,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             marginMD: 0,
             algorithm: true,
             fontSize: 11,
-            fontFamily: "Roboto",
+            //fontFamily: "Roboto",
+            fontFamily: "Outfit",
           },
           Message: {
-            fontFamily: "Roboto",
+            //fontFamily: "Roboto",
+            fontFamily: "Outfit",
             zIndexPopup: 9999999,
           },
         },

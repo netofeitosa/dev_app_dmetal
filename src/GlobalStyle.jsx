@@ -15,7 +15,8 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  //font-family: "Roboto", sans-serif;
+  font-family: "Outfit", serif !important;
   font-size: 15px;
   color: #040316;
   background-color: #f5f5f5;
@@ -92,6 +93,26 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.ant-select {
+  font-family: "Outfit", serif !important;
+}
+
+.ant-form {
+  font-family: "Outfit", serif !important;
+}
+
+.ant-picker {
+  font-family: "Outfit", serif !important;
+}
+
+.ant-message {
+  font-family: "Outfit", serif !important;
+}
+
+.ant-form-item-explain-error {
+  font-family: "Outfit", serif !important;
 }
 
 `;

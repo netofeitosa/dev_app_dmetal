@@ -19,23 +19,25 @@ const ChartVendasGerais = (props) => {
       height: 350,
       type: "line",
       toolbar: {
-        show: true,
+        show: false,
       },
       zoom: {
         enabled: false,
       },
+      fontFamily: "Outfit, sans-serif",
     },
     stroke: {
       width: [0, 0, 3],
     },
-    title: {
-      text: "Gráfico de Vendas",
-    },
+    // title: {
+    //   text: "Gráfico de Vendas",
+    // },
     dataLabels: {
       enabled: true,
       enabledOnSeries: [2],
       style: {
         fontSize: "9px",
+        fontFamily: "Outfit",
       },
       formatter: function (value) {
         if (value >= 1000000000) {
@@ -54,7 +56,8 @@ const ChartVendasGerais = (props) => {
       type: "string",
       labels: {
         style: {
-          fontSize: "12px",
+          fontSize: "10px",
+          fontFamily: "Outfit",
         },
       },
     },

@@ -7,5 +7,6 @@ export const theme = {
     background: "#f5f5f5",
     chevron: "#c6c6c6",
     boxShadow: "rgba(17, 17, 26, 0.3) 0px 0px 10px",
+    boxShadowCard: "rgba(17, 17, 26, 0.1) 0px 0px 12px",
   },
 };

@@ -8,6 +8,10 @@ export const ContainerFooter = styled.footer`
   bottom: 0;
   width: 100%;
   box-shadow: ${({ theme }) => theme.color.boxShadow};
+
+  & .ant-col {
+    font-family: "Outfit", serif !important;
+  }
 `;
 
 export const ContainerFooterLink = styled.div`
