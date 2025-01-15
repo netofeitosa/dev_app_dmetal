@@ -8,7 +8,7 @@ export const ContainerHeader = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 55px;
+  height: 60px;
   z-index: 999999;
   display: flex;
   align-items: center;
