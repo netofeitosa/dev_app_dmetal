@@ -18,29 +18,15 @@ const GeneratePDFComparativoVendas = async (response, responseData) => {
 
   const periodos = response.periodos;
 
-  // Calcular os totais
-  const totalPeriodo1 = response.lojas.reduce(
-    (sum, item) => sum + item.valor_liquido1,
-    0
-  );
-  const totalPeriodo2 = response.lojas.reduce(
-    (sum, item) => sum + item.valor_liquido2,
-    0
-  );
+  const totalPeriodo1 = response.totalperiodo1;
+  const totalPeriodo2 = response.totalperiodo2;
+  const totalPeriodo3 = response.totalperiodo3;
 
-  const totalPeriodo3 = response.lojas.reduce(
-    (sum, item) => sum + item.valor_liquido3,
-    0
-  );
-
-  const analiseGeral =
-    totalPeriodo1 !== 0 ? (totalPeriodo2 / totalPeriodo1 - 1) * 100 : 100;
+  const analiseGeral = response.totalPerc1;
+  const analiseGeral1 = response.totalPerc2;
 
   const percFillColorGeral =
     analiseGeral > 0 ? "#d4edda" : analiseGeral < 0 ? "#f8d7da" : "#ffffff";
-
-  const analiseGeral1 =
-    totalPeriodo2 !== 0 ? (totalPeriodo3 / totalPeriodo2 - 1) * 100 : 100;
 
   const percFillColorGeral1 =
     analiseGeral1 > 0 ? "#d4edda" : analiseGeral1 < 0 ? "#f8d7da" : "#ffffff";
@@ -64,10 +50,21 @@ const GeneratePDFComparativoVendas = async (response, responseData) => {
       { text: "Filtros:", fontSize: 11, bold: true },
       {
         ul: [
-          "Período 1: " + dataIni1 + " a " + dataEnd1,
-          "Período 2: " + dataIni2 + " a " + dataEnd2,
+          {
+            text: "Período 1: " + dataIni1 + " a " + dataEnd1,
+            margin: [0, 1, 0, 1],
+          },
+          {
+            text: "Período 2: " + dataIni2 + " a " + dataEnd2,
+            margin: [0, 1, 0, 1],
+          },
           ...(periodos === 3
-            ? ["Período 3: " + dataIni3 + " a " + dataEnd3]
+            ? [
+                {
+                  text: "Período 3: " + dataIni3 + " a " + dataEnd3,
+                  margin: [0, 1, 0, 1],
+                },
+              ]
             : []),
         ],
         style: "filter",
@@ -227,8 +224,7 @@ const GeneratePDFComparativoVendas = async (response, responseData) => {
       },
       filter: {
         margin: [0, 5, 0, 12],
-        fontSize: 10,
-        italics: true,
+        fontSize: 9,
       },
       tableExample: {
         margin: [0, 5, 0, 15],

@@ -16,8 +16,9 @@ const ChartEstoqueGeral = (props) => {
 
   const optionsMarca = {
     chart: {
-      width: 380,
+      width: 300,
       type: "pie",
+      fontFamily: "Outfit, sans-serif",
     },
     title: {
       text: "Por Marca",
@@ -29,8 +30,9 @@ const ChartEstoqueGeral = (props) => {
   };
   const optionsTecido = {
     chart: {
-      width: 380,
+      width: 300,
       type: "pie",
+      fontFamily: "Outfit, sans-serif",
     },
     title: {
       text: "Por Tecido",
